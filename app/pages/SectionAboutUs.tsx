@@ -72,10 +72,13 @@ function MemberRow({
       {/* Foto */}
       <div className="relative overflow-hidden rounded-3xl border border-violet-200/70 shadow-sm">
   <img
-    src={member.image}
-    alt={member.name}
-    className="w-full object-cover object-top sm:h-[30rem] lg:h-[35rem]" // Ajuste a altura conforme necessário
-  />
+  src={member.image}
+  alt={member.name}
+  className={`w-full object-cover sm:h-[30rem] lg:h-[35rem] ${
+    member.name === "Heitor Andrade" ? "object-[center_65%]" : "object-top"
+  }`}
+/>
+
   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
 </div>
 
@@ -121,7 +124,7 @@ export default function SectionAboutUs() {
     {
       name: "João Herker",
       role: "Nutricionista Esportivo",
-      bio: "Especialista em nutrição voltada para performance e resultados sustentáveis.Experiência internacional em preparação física e coachinExperiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.g para alto rendimento.",
+      bio: "João Saia Herker é nutricionista graduado, com pós-graduação em Bodybuilding Coach e Metabolismo Humano, especializado em nutrição esportiva, saúde e estética. Também é atleta de fisiculturismo e influenciador digital, reconhecido por traduzir ciência em prática de forma clara e aplicada ao cotidiano. Com experiência sólida na área, já orientou mais de 500 pessoas em processos de transformação física e metabólica — entre elas, pessoas com obesidade, falsos magros, indivíduos com extrema magreza, atletas de luta, maratonistas, atletas híbridos e fisiculturistas. Sua filosofia profissional une teoria e prática em perfeita sintonia, respeitando o metabolismo individual e ajustando o timing das estratégias nutricionais para otimizar resultados. Acredita que a verdadeira evolução é alcançada quando ciência, constância e individualidade caminham juntas.",
       image: "img/socios/joao2.jpg",
       socials: {
         instagram: "https://www.instagram.com/joaoherker",
@@ -133,7 +136,7 @@ export default function SectionAboutUs() {
     {
       name: "Heitor Andrade",
       role: "Personal Trainer",
-      bio: "Treinador com foco em hipertrofia, performance e prevenção de lesões.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.",
+      bio: "Heitor Andrade é Profissional de Educação Física (CREF 015234 G/DF), treinador e especialista em Nutrição Esportiva. Com uma metodologia baseada em ciência e prática, já transformou a vida de mais de 500 alunos, ajudando desde quem busca ganho de massa muscular e redução de gordura corporal, até aqueles que desejam melhorar a qualidade de vida através do exercício físico bem estruturado.Além de treinador, Heitor é influenciador digital, acumulando mais de 200 mil seguidores somando todas as suas redes sociais, onde compartilha diariamente conteúdos sobre treinamento, nutrição e estilo de vida. “Transformo ciência em resultado. Evolua treinando menos e de forma inteligente.”",
       image: "img/socios/heithor2.jpg",
       socials: {
         instagram: "https://www.instagram.com/_heitorandrade?igsh=c3Y5OXBhcGs1OHZh",
@@ -145,8 +148,8 @@ export default function SectionAboutUs() {
     },
     {
       name: "Jan Keller",
-      role: "Coach de Bodybuilding",
-      bio: "Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.Experiência internacional em preparação física e coaching para alto rendimento.",
+      role: "Bodybuilding",
+      bio: "Jan Keller é atleta de fisiculturismo natural, praticante de corrida, artes marciais e outras modalidades esportivas. Graduado em Nutrição e empresário no setor fitness, dedica-se a transformar vidas por meio da nutrição esportiva.Com uma abordagem baseada em ciência e consistência, acredita que é possível alcançar um físico saudável e estético sem o uso de esteroides anabolizantes e com flexibilidade na rotina. Sua missão é ajudar cada pessoa a atingir sua melhor versão de forma sustentável, flexível e alinhada ao estilo de vida individual.",
       image: "img/socios/jam2.jpg",
       socials: {
         instagram: "Instagram.com/kellerestevam",

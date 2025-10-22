@@ -38,10 +38,17 @@ function VideoCard({ item }: { item: FeedbackVideo }) {
     <div className="group relative flex flex-col overflow-hidden rounded-3xl border border-violet-300 bg-white/85 shadow-sm backdrop-blur">
       <div className="relative aspect-[14/16] w-full overflow-hidden bg-black">
 
-        <video controls poster="/videos/poster.jpg" className="h-full w-full object-cover">
-          <source src={item.videoUrl} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <video
+  controls
+  preload="metadata"
+  muted
+  playsInline
+  poster={`/videos/thumbs/${item.videoUrl.split("/").pop()?.replace(".mp4", ".jpg")}`}
+  className="h-full w-full object-cover"
+>
+  <source src={item.videoUrl + "#t=0.1"} type="video/mp4" />
+</video>
+
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition group-hover:opacity-100">
           <FaPlayCircle className="text-5xl text-white" />
         </div>
@@ -60,7 +67,7 @@ function VideoCard({ item }: { item: FeedbackVideo }) {
 export default function SectionFeedback() {
   const videos: FeedbackVideo[] = [
     {
-      name: "Gabriel S.",
+      name: "Sérgio M.",
       videoUrl: "/video/video1.mp4",
       quote: "Eles dão um suporte necessário de forma didática para que a gente não fique sem entender nada.",
       highlight: "Suporte próximo e ajustes semanais que fizeram diferença.",

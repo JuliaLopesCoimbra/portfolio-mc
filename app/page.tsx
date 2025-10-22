@@ -30,9 +30,11 @@ export default function Home() {
     </>
   );
 }
-//arrumar ne Hero qas fotos deles, deixar algo perfeito
-//arrumar header e colocar os textos certos
-//bio de cada um
-//pagina de planos (receber os planos)
+
+//tirar os avatares e colocar outros 
 //pegar fotos dignas do site para colocar no bonus e como funciona a consultoria
-//preciso de relatos por textos e fotos das pessoas para colocar nos icones
+//preciso de relatos por textos e fotos das pessoas para colocar nos icones(avatares)
+//colocar fadeIn nas seções
+
+//header no celular
+//antes e depois esta ficando em cima das fotos no celular

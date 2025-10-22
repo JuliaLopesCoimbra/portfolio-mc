@@ -49,17 +49,20 @@ export default function Header() {
 
   const navItems = [
    
-    { href: "#funciona", label: "Como funciona" },
-    { href: "#results", label: "Resultados" },
-    { href: "#planos", label: "Planos" },
-    { href: "#duvidas", label: "Dúvidas" },
-    { href: "#sobre", label: "Sobre" },
+    { href: "#funciona", label: "COMO FUNCIONA" },
+    { href: "#results", label: "RESULTADOS" },
+    { href: "#planos", label: "PLANOS" },
+    { href: "#duvidas", label: "DÚVIDAS" },
+    { href: "#sobre", label: "SOBRE" },
   ];
 
   return (
     <header
       className="fixed inset-x-0 top-0 z-50"
-   
+      style={{
+          background:
+            "radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.25), transparent 60%), radial-gradient(900px 500px at 90% 30%, rgba(34,211,238,0.18), transparent 60%), radial-gradient(800px 500px at 50% 85%, rgba(168,85,247,0.18), transparent 60%)",
+        }}
     >
       <div className="relative">
         <PatternBG />
@@ -80,8 +83,8 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors",
-                  "text-violet-700 hover:text-violet-900"
+                  "text-sm font-bold transition-colors",
+                  "text-violet-500 hover:text-violet-900"
                 )}
               >
                 {item.label}

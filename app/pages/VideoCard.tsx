@@ -81,7 +81,7 @@ export default function SectionFeedback() {
     },
     {
       name: "Carolina C.",
-      videoUrl: "/video/video3.mp4",
+      videoUrl: "/video/video1.mp4",
       quote: "Eu já tinha tentado vários treinos, mas agora sinto evolução real sem dores.",
       highlight: "Treino adaptado às minhas limitações com resultado visível.",
     },

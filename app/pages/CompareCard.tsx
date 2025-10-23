@@ -1,6 +1,7 @@
 "use client";
 import { useMemo } from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import { motion } from "framer-motion"; 
 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
@@ -37,22 +38,24 @@ function PatternBG() {
 
 /** Card simples com fotos Antes/Depois (lado a lado), sem textos */
 function ResultThumb({ beforeSrc, afterSrc }: { beforeSrc: string; afterSrc: string }) {
-  // Detecta se é uma das imagens especiais
-  const isTopAligned = afterSrc.includes("person3after") || afterSrc.includes("person7after") || afterSrc.includes("person3before");
+  const isTopAligned =
+    afterSrc.includes("person3after") ||
+    afterSrc.includes("person7after") ||
+    afterSrc.includes("person3before");
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-violet-200/60 bg-white/80 p-2 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
+    <div className="group relative overflow-hidden rounded-2xl border border-violet-200/60 bg-white/80 p-3 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="grid grid-cols-2 gap-2">
+        {/* Imagens */}
         <div className="relative aspect-[3/5] w-full overflow-hidden rounded-xl ring-1 ring-violet-200/70">
           <img
             src={beforeSrc}
             alt="Antes"
-              className={cn(
+            className={cn(
               "h-full w-full object-cover transition group-hover:scale-[1.03]",
-              isTopAligned && "object-top" // 👈 aplica somente às imagens que precisam
+              isTopAligned && "object-top"
             )}
           />
-          <span className="absolute left-2 top-2 rounded-full bg-black/55 px-2 py-0.5 text-[10px] font-semibold text-white">Antes</span>
         </div>
         <div className="relative aspect-[3/5] w-full overflow-hidden rounded-xl ring-1 ring-violet-200/70">
           <img
@@ -60,15 +63,25 @@ function ResultThumb({ beforeSrc, afterSrc }: { beforeSrc: string; afterSrc: str
             alt="Depois"
             className={cn(
               "h-full w-full object-cover transition group-hover:scale-[1.03]",
-              isTopAligned && "object-top" // 👈 aplica somente às imagens que precisam
+              isTopAligned && "object-top"
             )}
           />
-          <span className="absolute right-2 top-2 rounded-full bg-violet-600/90 px-2 py-0.5 text-[10px] font-semibold text-white">Depois</span>
         </div>
+      </div>
+
+      {/* Rótulos fora das imagens */}
+      <div className="mt-2 grid grid-cols-2 text-center">
+        <span className="rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-semibold text-white w-fit mx-auto">
+          Antes
+        </span>
+        <span className="rounded-full bg-violet-600/90 px-2 py-0.5 text-[10px] font-semibold text-white w-fit mx-auto">
+          Depois
+        </span>
       </div>
     </div>
   );
 }
+
 
 
 export default function SectionResults() {
@@ -96,7 +109,13 @@ export default function SectionResults() {
     >
       <PatternBG />
 
-      <div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
+  <motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+  viewport={{ once: true }}
+ 
+><div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
         <h2 className="text-2xl font-semibold text-neutral-900 sm:text-3xl">Resultados reais</h2>
         <p className="mt-2 max-w-prose text-sm text-neutral-700">
           Antes e depois dos nossos membros. Foco em consistência e acompanhamento próximo.
@@ -122,7 +141,8 @@ export default function SectionResults() {
           </button>
           <span className="text-xs text-neutral-600">Acompanhamento diferencial dentro da comunidade</span>
         </div>
-      </div>
+      </div></motion.div>
+      
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/70 to-transparent" />
     </section>

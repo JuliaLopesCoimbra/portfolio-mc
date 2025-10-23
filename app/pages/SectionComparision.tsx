@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { FaWhatsapp, FaTimesCircle, FaCheckCircle } from "react-icons/fa";
-
+import { motion } from "framer-motion"; 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -89,7 +89,13 @@ export default function SectionComparison() {
         }}
     >
       <PatternBG />
-
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+  viewport={{ once: true }}
+ 
+> 
       <div className="relative mx-auto w-full max-w-7xl px-6 md:px-10 justify-center text-center">
        
         <h2 className="mt-2 text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl">
@@ -186,7 +192,7 @@ export default function SectionComparison() {
           </button>
         </div>
       </div>
-
+</motion.div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/70 to-transparent" />
     </section>
   );

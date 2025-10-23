@@ -120,36 +120,38 @@ export default function Header() {
         <div className="relative h-px w-full bg-gradient-to-r from-transparent via-violet-300/70 to-transparent" />
 
         {/* Drawer Mobile */}
-        <div
-          className={cn(
-            "md:hidden overflow-hidden transition-[max-height] duration-300",
-            isOpen ? "max-h-[420px]" : "max-h-0"
-          )}
+       {/* Drawer Mobile */}
+<div
+  className={cn(
+    "md:hidden overflow-hidden transition-[max-height] duration-300",
+    isOpen ? "max-h-[420px]" : "max-h-0"
+  )}
+>
+  <div className="px-4 py-4 bg-violet-900/95 backdrop-blur-md">
+    <nav className="flex flex-col gap-4">
+      {navItems.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className="text-base font-medium text-white hover:text-violet-200"
+          onClick={() => setIsOpen(false)}
         >
-          <div className="px-4 py-4">
-            <nav className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-base font-medium text-violet-800 hover:text-violet-950"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <button
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-violet-300 bg-white/70 px-4 py-3 font-semibold text-violet-800 hover:bg-violet-50"
-              onClick={() => {
-                handleClick();
-                setIsOpen(false);
-              }}
-            >
-              <FaWhatsapp className="text-xl" /> Falar no WhatsApp
-            </button>
-          </div>
-        </div>
+          {item.label}
+        </Link>
+      ))}
+    </nav>
+    <button
+      className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-violet-300/60 bg-violet-800/70 px-4 py-3 font-semibold text-white hover:bg-violet-700/90"
+      onClick={() => {
+        handleClick();
+        setIsOpen(false);
+      }}
+    >
+      <FaWhatsapp className="text-xl" /> Falar no WhatsApp
+    </button>
+  </div>
+</div>
+
       </div>
     </header>
   );

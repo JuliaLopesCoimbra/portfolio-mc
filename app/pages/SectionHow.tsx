@@ -5,6 +5,7 @@ import {
   FaClipboardList,
   FaHeadset,
 } from "react-icons/fa";
+import { motion } from "framer-motion"; 
 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
@@ -129,8 +130,13 @@ export default function SectionHowV3() {
       }}
     >
       <PatternBG />
-
-      <div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
+ <motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+  viewport={{ once: true }}
+ 
+> <div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-[11px] font-semibold tracking-widest text-violet-300">
             COMO FUNCIONA
@@ -219,7 +225,8 @@ export default function SectionHowV3() {
           </button>
         
         </div>
-      </div>
+      </div></motion.div>
+     
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent" />
     </section>

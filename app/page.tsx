@@ -34,7 +34,6 @@ export default function Home() {
 //tirar os avatares e colocar outros 
 //pegar fotos dignas do site para colocar no bonus e como funciona a consultoria
 //preciso de relatos por textos e fotos das pessoas para colocar nos icones(avatares)
-//colocar fadeIn nas seções
 
 //header no celular
 //antes e depois esta ficando em cima das fotos no celular

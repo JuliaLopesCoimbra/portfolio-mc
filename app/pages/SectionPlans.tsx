@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import { motion } from "framer-motion"; 
 
 /** util */
 function cn(...classes: Array<string | false | null | undefined>): string {
@@ -189,8 +190,13 @@ export default function SectionPlans() {
       }}
     >
       <PatternBG />
-
-      <div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+  viewport={{ once: true }}
+ 
+><div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
         <h2 className="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl">
           Escolha o plano ideal para você
         </h2>
@@ -251,7 +257,8 @@ export default function SectionPlans() {
             Quero saber melhor sobre o plano da Muscle Club
           </button>
         </div>
-      </div>
+      </div></motion.div>
+      
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/70 to-transparent" />
     </section>

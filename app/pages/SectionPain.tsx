@@ -1,7 +1,7 @@
 "use client";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
-
+import { motion } from "framer-motion"; 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -96,8 +96,13 @@ export default function SectionPain() {
         }}
     >
       <PatternBG />
-
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center px-6 md:px-10">
+      <motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+  viewport={{ once: true }}
+ 
+> <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center px-6 md:px-10">
         {/* Bloco centralizado */}
         <div className="w-full max-w-2xl text-center">
          
@@ -140,7 +145,8 @@ export default function SectionPain() {
          
           </div>
         </div>
-      </div>
+      </div></motion.div>
+     
 
       {/* divisor */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent" />

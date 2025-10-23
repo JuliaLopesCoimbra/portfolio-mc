@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { FaWhatsapp, FaInstagram, FaEnvelope,FaYoutube } from "react-icons/fa";
+import { motion } from "framer-motion"; 
 
 function PatternBG() {
   return (
@@ -21,6 +22,13 @@ export default function Footer() {
   return (
     <footer className="relative isolate overflow-hidden border-t border-violet-200 bg-white/90 backdrop-blur">
       <PatternBG />
+            <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        viewport={{ once: true }}
+       
+      > 
       <div className="relative mx-auto max-w-7xl px-6 py-10 md:px-10">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Logo e missão */}
@@ -98,6 +106,7 @@ export default function Footer() {
           © {new Date().getFullYear()} Muscle Club. Todos os direitos reservados.
         </div>
       </div>
+       </motion.div>
     </footer>
   );
 }

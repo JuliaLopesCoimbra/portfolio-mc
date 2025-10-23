@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import { motion } from "framer-motion"; 
 
 function PatternBG() {
   return (
@@ -88,6 +89,13 @@ export default function SectionFAQ() {
             "radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.25), transparent 60%), radial-gradient(900px 500px at 90% 30%, rgba(34,211,238,0.18), transparent 60%), radial-gradient(800px 500px at 50% 85%, rgba(168,85,247,0.18), transparent 60%)",
         }}>
       <PatternBG />
+      <motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+  viewport={{ once: true }}
+ 
+> 
       <div className="relative mx-auto w-full max-w-4xl px-6 md:px-10">
        
         <h2 className="mt-2 text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl">
@@ -103,6 +111,7 @@ export default function SectionFAQ() {
           ))}
         </div>
       </div>
+      </motion.div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/70 to-transparent" />
     </section>
   );

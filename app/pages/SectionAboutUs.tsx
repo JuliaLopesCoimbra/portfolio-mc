@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { FaInstagram, FaEnvelope, FaYoutube, FaWhatsapp } from "react-icons/fa";
+import { motion } from "framer-motion"; 
 
 function PatternBG() {
   return (
@@ -169,8 +170,13 @@ export default function SectionAboutUs() {
       }}
     >
       <PatternBG />
-
-      <div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+  viewport={{ once: true }}
+ 
+>  <div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
        
         <h2 className="mt-2 text-balance text-3xl font-semibold leading-tight text-neutral-950 sm:text-4xl">
           Quem somos nós
@@ -184,7 +190,8 @@ export default function SectionAboutUs() {
             <MemberRow key={i} member={m} reverse={i % 2 === 1} />
           ))}
         </div>
-      </div>
+      </div></motion.div>
+    
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/70 to-transparent" />
     </section>

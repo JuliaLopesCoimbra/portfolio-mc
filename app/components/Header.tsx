@@ -120,14 +120,13 @@ export default function Header() {
         <div className="relative h-px w-full bg-gradient-to-r from-transparent via-violet-300/70 to-transparent" />
 
         {/* Drawer Mobile */}
-       {/* Drawer Mobile */}
 <div
   className={cn(
     "md:hidden overflow-hidden transition-[max-height] duration-300",
     isOpen ? "max-h-[420px]" : "max-h-0"
   )}
 >
-  <div className="px-4 py-4 bg-violet-900/95 backdrop-blur-md">
+  <div className="px-4 py-4 bg-violet-900/10 backdrop-blur-md">
     <nav className="flex flex-col gap-4">
       {navItems.map((item) => (
         <Link

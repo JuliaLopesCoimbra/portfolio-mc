@@ -131,7 +131,7 @@ export default function SectionAboutUs() {
         instagram: "https://www.instagram.com/joaoherker",
         email: "mailto:joaovictorherker@gmail.com",
         youtube: "https://www.youtube.com/@joaovictorherker",
-        whatsapp: "https://wa.me/5516997572671?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20consultoria.",
+        whatsapp: "5516997572671?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20consultoria.",
       },
     },
     {
@@ -143,7 +143,7 @@ export default function SectionAboutUs() {
         instagram: "https://www.instagram.com/_heitorandrade?igsh=c3Y5OXBhcGs1OHZh",
         email: "mailto:heitorandradessss@gmail.com",
       
-        whatsapp: "https://wa.me/55619311-9395?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20consultoria.",
+        whatsapp: "556193119395?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20consultoria.",
        
       },
     },
@@ -153,10 +153,10 @@ export default function SectionAboutUs() {
       bio: "Jan Keller é atleta de fisiculturismo natural, praticante de corrida, artes marciais e outras modalidades esportivas. Graduado em Nutrição e empresário no setor fitness, dedica-se a transformar vidas por meio da nutrição esportiva.Com uma abordagem baseada em ciência e consistência, acredita que é possível alcançar um físico saudável e estético sem o uso de esteroides anabolizantes e com flexibilidade na rotina. Sua missão é ajudar cada pessoa a atingir sua melhor versão de forma sustentável, flexível e alinhada ao estilo de vida individual.",
       image: "img/socios/jam2.jpg",
       socials: {
-        instagram: "Instagram.com/kellerestevam",
+        instagram: "https://www.instagram.com/kellerestevam",
         email: "mailto:jankeller583@gmail.com",
        
-        whatsapp: "https://wa.me/55319745-0000?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20consultoria.",
+        whatsapp: "553197450000?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20consultoria.",
       },
     },
   ];

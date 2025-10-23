@@ -63,7 +63,24 @@ function BonusCard({
 
       {image && (
         <div className="mt-4 rounded-2xl  p-3">
-          <img src={image} alt="Bonus" className="mx-auto h-48 object-contain" />
+         {image && (
+  <div className="mt-4 rounded-2xl p-3">
+    {image.includes("mc3.png") || image.includes("mc4.png") ? (
+      <img
+        src={image}
+        alt="Bonus"
+        className="mx-auto h-48 w-full rounded-2xl object-cover object-left shadow-md ring-1 ring-violet-200/50 transition-all duration-500 group-hover:scale-[1.05]"
+      />
+    ) : (
+      <img
+        src={image}
+        alt="Bonus"
+        className="mx-auto h-48 object-contain"
+      />
+    )}
+  </div>
+)}
+
         </div>
       )}
     </div>
@@ -118,7 +135,7 @@ export default function SectionBonus() {
 
               </>
             }
-            image="img/platform/mc2.png"
+            image="img/platform/mc3.png"
           />
 
           <BonusCard
@@ -131,7 +148,7 @@ export default function SectionBonus() {
 
               </>
             }
-            image="img/platform/mc3.png"
+            image="img/platform/mc4.png"
           />
         </div>
 

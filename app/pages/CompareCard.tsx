@@ -164,7 +164,7 @@ export default function SectionResults() {
                 "[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
               )}
               style={{
-                WebkitOverflowScrolling: "touch" as any,
+                WebkitOverflowScrolling: "touch",
                 // ajuda o snap a “encaixar” com espacinho nas bordas
                 scrollPaddingLeft: "24px",
                 scrollPaddingRight: "24px",

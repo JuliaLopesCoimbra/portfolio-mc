@@ -1,5 +1,5 @@
 "use client";
-import { motion, useReducedMotion, MotionProps } from "framer-motion";
+import { motion, useReducedMotion, type MotionProps, type Target } from "framer-motion";
 import React from "react";
 
 type RevealProps = React.PropsWithChildren<{
@@ -26,8 +26,13 @@ export function Reveal({
 }: RevealProps) {
   const reduce = useReducedMotion();
 
-  const initial = reduce ? { opacity: 0 } : { opacity: 0, y, x, scale, filter: "blur(6px)" as any };
-  const animate = reduce ? { opacity: 1 } : { opacity: 1, y: 0, x: 0, scale: 1, filter: "blur(0px)" as any };
+  const initial: Target = reduce
+    ? { opacity: 0 }
+    : { opacity: 0, y, x, scale, filter: "blur(6px)" };
+
+  const animate: Target = reduce
+    ? { opacity: 1 }
+    : { opacity: 1, y: 0, x: 0, scale: 1, filter: "blur(0px)" };
 
   return (
     <motion.div

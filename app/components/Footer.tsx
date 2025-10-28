@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { FaWhatsapp, FaInstagram, FaEnvelope,FaYoutube } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion"; 
 
 function PatternBG() {

@@ -10,9 +10,9 @@ type RevealProps = React.PropsWithChildren<{
   x?: number;
   scale?: number;
   once?: boolean;
+  blur?: boolean; // 👈 novo: controla se aplica blur
 }> & MotionProps;
 
-// Fade + slide + leve blur (acessível: respeita prefers-reduced-motion)
 export function Reveal({
   as: Tag = "div",
   delay = 0,
@@ -21,18 +21,20 @@ export function Reveal({
   x = 0,
   scale = 1,
   once = true,
+  blur = false, // 👈 por padrão, sem blur
   children,
   ...rest
 }: RevealProps) {
   const reduce = useReducedMotion();
+  const canBlur = blur && !reduce;
 
-  const initial: Target = reduce
-    ? { opacity: 0 }
-    : { opacity: 0, y, x, scale, filter: "blur(6px)" };
+  const initial: Target = canBlur
+    ? { opacity: 0, y, x, scale, filter: "blur(6px)" }
+    : { opacity: 0, y, x, scale };
 
-  const animate: Target = reduce
-    ? { opacity: 1 }
-    : { opacity: 1, y: 0, x: 0, scale: 1, filter: "blur(0px)" };
+  const animate: Target = canBlur
+    ? { opacity: 1, y: 0, x: 0, scale: 1, filter: "blur(0px)" }
+    : { opacity: 1, y: 0, x: 0, scale: 1 };
 
   return (
     <motion.div

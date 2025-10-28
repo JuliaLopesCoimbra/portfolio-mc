@@ -132,11 +132,11 @@ export default function SectionPain() {
           {/* Box de reforço */}
        {/* Box de reforço (mais chamativa e branca) */}
 <div
-  className="mx-auto mt-8 w-full max-w-xl rounded-2xl   p-5 text-center text-white "
+  className="mx-auto mt-8 w-full max-w-xl rounded-2xl   p-1 text-center text-white "
 >
   <p className="text-lg sm:text-xl leading-relaxed font-medium">
     <strong className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]">
-      O PROBLEMA NUNCA FOI VOCÊ.
+      O PROBLEMA NUNCA FOI VOCÊ.<br></br>
     </strong>{" "}
     <span className="text-white/90">
       Foi a falta de um{" "}

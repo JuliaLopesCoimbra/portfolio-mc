@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
        <Header />
-      <main className="pt-16">
+    <main className="pt-0">
        <Hero />
        <SectionPain />
        <CompareCard />
@@ -31,5 +31,7 @@ export default function Home() {
   );
 }
 
-//pegar fotos dignas do site para colocar no bonus e como funciona a consultoria
-//preciso de relatos por textos e fotos das pessoas para colocar nos icones(avatares)
+// * ⁠arrumar foto principal no desktop
+// * ⁠fotos nos avatares
+//deixar a parte bonus mais chamativa, ta mt morto
+// parte de como funciona a consultoria, precisa melhorar

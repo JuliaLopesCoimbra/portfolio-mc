@@ -65,7 +65,7 @@ function BonusCard({
         <div className="mt-4 rounded-2xl  p-3">
          {image && (
   <div className="mt-4 rounded-2xl p-3">
-    {image.includes("mc3.png") || image.includes("mc4.png") ? (
+    {image.includes("aulas.png") || image.includes("ebook.png") ? (
       <img
         src={image}
         alt="Bonus"
@@ -135,7 +135,7 @@ export default function SectionBonus() {
 
               </>
             }
-            image="img/platform/mc3.png"
+            image="img/platform/aulas.png"
           />
 
           <BonusCard
@@ -148,7 +148,7 @@ export default function SectionBonus() {
 
               </>
             }
-            image="img/platform/mc4.png"
+            image="img/platform/ebook.png"
           />
         </div>
 

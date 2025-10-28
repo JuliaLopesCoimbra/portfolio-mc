@@ -61,18 +61,20 @@ function Bullet({ children }: { children: React.ReactNode }) {
   return (
     <li
       className={cn(
-        "group relative mx-auto flex w-full items-start gap-3 rounded-2xl border border-violet-300/40 text-white px-4 py-3 shadow-sm backdrop-blur transition",
+        "text-lg font-semibold group relative mx-auto flex w-full items-start gap-3 rounded-2xl   text-white px-4 py-3 shadow-sm backdrop-blur transition",
         "hover:-translate-y-0.5 hover:shadow-md border border-white/10 text-white   bg-white/5 backdrop-blur"
       )}
+      // style={{border:"solid 1px yellow"}}
     >
       {/* Badge com X vermelho estilizado */}
       <span
         className={cn(
-          "mt-0.5 grid h-7 w-7 place-items-center rounded-full text-red-600 ring-1 ring-red-200",
+          "mt-0.5 grid h-7 w-7 place-items-center rounded-full text-red-600 ",
           "bg-[conic-gradient(from_180deg_at_50%_50%,theme(colors.red.500/.18),theme(colors.red.600/.22),transparent_65%)]",
           "transition group-hover:scale-105"
         )}
         aria-hidden
+        // style={{border:"solid 1px yellow"}}
       >
         <FaRegCircleXmark className="text-[18px] drop-shadow-[0_0_6px_rgba(239,68,68,0.35)]" />
       </span>
@@ -91,9 +93,14 @@ export default function SectionPain() {
       id="dor"
       className="relative isolate overflow-hidden py-16 sm:py-24"
      style={{
-          background:
-            "radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.25), transparent 60%), radial-gradient(900px 500px at 90% 30%, rgba(34,211,238,0.18), transparent 60%), radial-gradient(800px 500px at 50% 85%, rgba(168,85,247,0.18), transparent 60%)",
-        }}
+  background: `
+    radial-gradient(1200px 600px at 10% 10%, rgba(88,28,135,0.15), transparent 70%),
+    radial-gradient(900px 500px at 90% 30%, rgba(37,99,235,0.12), transparent 70%),
+    radial-gradient(800px 500px at 50% 85%, rgba(147,51,234,0.10), transparent 70%),
+    #000000
+  `,
+}}
+
     >
       <PatternBG />
       <motion.div
@@ -123,12 +130,24 @@ export default function SectionPain() {
           </ul>
 
           {/* Box de reforço */}
-          <div className="mx-auto mt-6 w-full rounded-2xl border border-violet-300/50 text-white   bg-white/5 p-4 text-lx1
-            shadow-sm">
-            <strong className="text-violet-800 ">O PROBLEMA NUNCA FOI VOCÊ.</strong>{" "}
-            Foi a falta de um acompanhamento e de um<strong> MÉTODO</strong> que
-            respeita a sua realidade.
-          </div>
+       {/* Box de reforço (mais chamativa e branca) */}
+<div
+  className="mx-auto mt-8 w-full max-w-xl rounded-2xl   p-5 text-center text-white "
+>
+  <p className="text-lg sm:text-xl leading-relaxed font-medium">
+    <strong className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]">
+      O PROBLEMA NUNCA FOI VOCÊ.
+    </strong>{" "}
+    <span className="text-white/90">
+      Foi a falta de um{" "}
+      <strong className="text-violet-300 font-semibold">ACOMPANHAMENTO</strong>{" "}
+      e de um{" "}
+      <strong className="text-violet-300 font-semibold">MÉTODO</strong> que
+      respeita a sua realidade.
+    </span>
+  </p>
+</div>
+
 
           {/* CTA central */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

@@ -3,8 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaLeaf, FaBolt, FaUsers } from "react-icons/fa6";
-import { FaStar } from "react-icons/fa"
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -19,12 +18,10 @@ function handleWhatsAppClick() {
 function Background() {
   return (
     <div aria-hidden className="absolute inset-0 overflow-hidden">
-      {/* Mesh gradient principal */}
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.25), transparent 60%), radial-gradient(900px 500px at 90% 30%, rgba(34,211,238,0.18), transparent 60%), radial-gradient(800px 500px at 50% 85%, rgba(168,85,247,0.18), transparent 60%)",
+          background: "#000000",
         }}
       />
 
@@ -68,9 +65,19 @@ function Background() {
   );
 }
 
-function Pill({ children }: { children: React.ReactNode }) {
+function Pill({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement> & { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/50 bg-white/10 px-3 py-1 text-xs tracking-wide text-violet-100 backdrop-blur">
+    <span
+      {...props}
+      className={cx(
+        "inline-flex items-center gap-2 rounded-full border border-violet-400/50 bg-white/10 px-3 py-1 text-xs tracking-wide text-violet-100 backdrop-blur",
+        className
+      )}
+    >
       {children}
     </span>
   );
@@ -78,7 +85,7 @@ function Pill({ children }: { children: React.ReactNode }) {
 
 function CTA() {
   return (
-    <div className="mt-10 flex w-full flex-col items-start gap-3 sm:flex-row">
+    <div className="mt-8 flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start md:items-start">
       <button
         onClick={handleWhatsAppClick}
         className={cx(
@@ -104,183 +111,218 @@ function CTA() {
 
 function RightShowcase() {
   return (
-    <div className="relative mx-auto w-full max-w-[900px]"
-   >
-      {/* Linhas diagonais */}
-      <svg
-        className="absolute inset-0 h-full w-full opacity-[0.06]"
-        xmlns="http://www.w3.org/2000/svg"
+    <div
+      className="
+        relative mx-auto w-full max-w-[900px]
+        md:px-0
+      "
+    >
+      {/* container da imagem */}
+      <div
+        className="
+          relative overflow-hidden rounded-none md:rounded-3xl
+    h-[39svh] md:h-auto md:aspect-[6/4] md:max-h-[85svh]
+    -mx-4 sm:-mx-6 md:mx-0
+
+    /* --- Sombras somente no desktop --- */
+    md:shadow-[0px_0px_60px_rgba(139,92,246,0.25)]
+    
+        "
       >
-        <defs>
-          <pattern
-            id="lines"
-            width="40"
-            height="40"
-            patternUnits="userSpaceOnUse"
-            patternTransform="rotate(45)"
-          >
-            <line
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="40"
-              stroke="#ffffff"
-              strokeWidth="0.5"
-            />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#lines)" />
-      </svg>
-
-      {/* Brilho radial */}
-      <div className="absolute -inset-12 bg-[radial-gradient(circle_at_50%_30%,rgba(249,115,22,0.4),transparent_70%)] blur-3xl" />
-
-      <div className="relative aspect-[5/4] overflow-hidden rounded-3xl"
-     >
+        {/* Desktop */}
         <Image
-          src="/img/teste5.png"
-          alt="Showcase"
+          src="/img/platform/hero-desktop.jpg"
+          alt="Showcase Muscle Club"
           fill
           priority
-          sizes="(max-width: 900px) 100vw, 900px"
-          className="object-contain object-center"
+          sizes="(min-width: 768px) 900px"
+          className="hidden md:block object-cover object-center"
+        />
+
+        <Image
+          src="/img/platform/hero-mobile.jpg"
+          alt="Showcase Muscle Club"
+          fill
+          priority
+          sizes="(max-width: 767px) 100vw"
+          className="md:hidden object-cover object-bottom"
+          style={{ objectPosition: "center bottom" }}
         />
       </div>
-  <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-  {/* Avatares */}
-<div className="flex items-center gap-3">
-  {/* Avatares */}
-  <div className="flex -space-x-2">
-    <img
-      src="/img/avatar/avatar1.jpeg"
-      className="h-8 w-8 rounded-full ring-[1.5px] ring-[#ffae00]/60"
-      alt=""
-    />
-    <img
-      src="/img/avatar/avatar2.jpeg"
-      className="h-8 w-8 rounded-full ring-[1.5px] ring-[#ffae00]/60"
-      alt=""
-    />
-    <img
-      src="/img/avatar/avatar3.jpeg"
-      className="h-8 w-8 rounded-full ring-[1.5px] ring-[#ffae00]/60"
-      alt=""
-    />
-  </div>
 
-  {/* Texto ao lado */}
-  <span className="text-xs font-medium text-violet-100/90">
-    +300 membros
-  </span>
-</div>
-
-
-  {/* Texto + estrelas */}
-  <div className="flex flex-col items-end text-right">
-    <span className="text-xs text-[#ffae00] mb-1">Junte-se à comunidade</span>
-    <div className="flex items-center gap-1">
-      <div className="flex text-[#ffae00]">
-        {[...Array(5)].map((_, i) => (
-          <FaStar key={i} size={11} />
-        ))}
+      {/* Avatares + membros — visível apenas no desktop */}
+      <div
+        className="
+    hidden md:flex mt-3 items-center justify-between
+    rounded-2xl px-4 py-3 backdrop-blur
+  "
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex -space-x-2">
+            <img
+              src="/img/avatar/avatar1.jpeg"
+              className="h-8 w-8 rounded-full"
+              alt=""
+            />
+            <img
+              src="/img/avatar/avatar2.jpeg"
+              className="h-8 w-8 rounded-full"
+              alt=""
+            />
+            <img
+              src="/img/avatar/avatar3.jpeg"
+              className="h-8 w-8 rounded-full"
+              alt=""
+            />
+          </div>
+          <span className="text-xs font-medium text-violet-100/90">
+            +300 membros
+          </span>
+        </div>
       </div>
-      <span className="text-[11px] text-white/80">4.9 / 5</span>
-    </div>
-  </div>
-</div>
     </div>
   );
 }
 
 const Hero: React.FC = () => {
   return (
-    <section
-      className="relative isolate overflow-hidden bg-neutral-950 text-white"
-      // style={{ border: "solid red 1px" }}
-    >
+    <section className="relative isolate overflow-hidden bg-neutral-950 text-white">
       <Background />
 
       <div
-        // style={{ border: "solid red 1px" }}
-        className="relative mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-16  md:grid-cols-[1.05fr_0.95fr] md:gap-16 md:px-10 "
+        className="
+          relative mx-auto w-full max-w-7xl
+          min-h-[100svh] md:min-h-0
+          grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr]
+          items-stretch md:items-center
+          gap-6 md:gap-16
+          px-4 md:px-10
+          pb-6 md:py-16
+        "
       >
-        {/* Coluna Esquerda – Texto */}
+        {/* IMAGEM – fica primeiro no mobile */}
         <motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.7, ease: "easeOut" }}
-  viewport={{ once: true }}
- 
->
-   <div 
-        // style={{ border: "solid red 1px" }} 
-        className="relative z-10 pt-20">
-          <div className="mb-5 flex flex-wrap gap-2">
-            <Pill>
-              <FaUsers className="text-violet-300" /> Comunidade Muscle Club
-            </Pill>
-            <Pill>
-              <FaLeaf className="text-violet-300" /> 100% Natural
-            </Pill>
-            <Pill>
-              <FaBolt className="text-violet-300" /> Plano simples de seguir
-            </Pill>
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="order-1 md:order-2"
+        >
+          <div className="relative z-10 md:pt-10">
+            <RightShowcase />
           </div>
+        </motion.div>
 
-          <h1 className="text-balance text-4xl font-semibold leading-tight sm:text-4xl lg:text-4xl">
-            Já pensou alcançar o melhor{" "}
-            <span className="bg-violet-700  bg-clip-text text-transparent">
-              shape
-            </span>{" "}
-            da sua vida treinando menos e com um plano alimentar fácil de
-            seguir?
-          </h1>
+        {/* TEXTO – cabe em ~55% da tela no mobile */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="order-2 md:order-1"
+        >
+          <div
+            className="
+    relative z-10
+    h-[55svh] md:h-auto
+    flex flex-col
+    pt-3 md:pt-10
+    items-center md:items-start
+    text-center md:text-left
+  "
+          >
+            {/* Pills: compacto no mobile */}
+            <div className="mb-3 flex flex-wrap gap-2">
+              <Pill>
+                <FaUsers className="text-violet-300" /> Comunidade Muscle Club
+              </Pill>
+              <Pill className="hidden sm:inline-flex">
+                <FaLeaf className="text-violet-300" /> 100% Natural
+              </Pill>
+              <Pill className="hidden sm:inline-flex">
+                <FaBolt className="text-violet-300" /> Plano simples
+              </Pill>
+            </div>
+            <h1
+              className="
+    text-balance text-[22px] leading-tight sm:text-3xl lg:text-4xl
+    font-semibold text-center md:text-left
+    max-w-[28rem] sm:max-w-[42rem] md:max-w-[50rem]
+  "
+            >
+              Já pensou alcançar o melhor{" "}
+              <span className="bg-violet-700 bg-clip-text text-transparent">
+                shape
+              </span>{" "}
+              da sua vida treinando menos e com um plano alimentar fácil de
+              seguir?
+            </h1>
 
-          <p className="mt-4 max-w-prose text-base/relaxed text-violet-100/90">
-            Com a Muscle Club isso é possível. Tudo isso de forma natural e sem
-            ter a genética do CBUM
-          </p>
-
-          <CTA />
-
-          <div className="mt-12 grid max-w-lg grid-cols-3 gap-4 text-center">
-            <div className="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur">
-              <div className="text-2xl font-semibold text-white">2000+</div>
-              <div className="mt-1 text-xs text-violet-200/80">
-                shapes transformados
+            <p
+              className="
+    mt-3 text-sm sm:text-base text-violet-100/90
+    text-center md:text-left
+    max-w-[20rem] sm:max-w-[30rem] md:max-w-[36rem]
+  "
+            >
+              Com a Muscle Club isso é possível. Tudo isso de forma natural e
+              sem ter a genética do CBUM.
+            </p>
+            {/* Avatares + membros — visível apenas no mobile */}
+            <div
+              className="
+    flex md:hidden mt-4 justify-center
+  "
+            >
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  <img
+                    src="/img/avatar/avatar1.jpeg"
+                    className="h-8 w-8 rounded-full"
+                    alt=""
+                  />
+                  <img
+                    src="/img/avatar/avatar2.jpeg"
+                    className="h-8 w-8 rounded-full"
+                    alt=""
+                  />
+                  <img
+                    src="/img/avatar/avatar3.jpeg"
+                    className="h-8 w-8 rounded-full"
+                    alt=""
+                  />
+                </div>
+                <span className="text-xs font-medium text-violet-100/90">
+                  +300 membros
+                </span>
               </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur">
-              <div className="text-2xl font-semibold text-white">3</div>
-              <div className="mt-1 text-xs text-violet-200/80">
-                mentores dedicados
-              </div>
-            </div>
+            <CTA />
 
-            <div className="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur">
-              <div className="text-2xl font-semibold text-white">97%</div>
-              <div className="mt-1 text-xs text-violet-200/80">
-                adesão ao plano
+            {/* Estatísticas: escondidas no mobile para caber na tela */}
+            <div className="mt-6 hidden sm:grid max-w-lg grid-cols-3 gap-4 text-center">
+              <div className="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur">
+                <div className="text-2xl font-semibold text-white">2000+</div>
+                <div className="mt-1 text-xs text-violet-200/80">
+                  shapes transformados
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur">
+                <div className="text-2xl font-semibold text-white">3</div>
+                <div className="mt-1 text-xs text-violet-200/80">
+                  mentores dedicados
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur">
+                <div className="text-2xl font-semibold text-white">97%</div>
+                <div className="mt-1 text-xs text-violet-200/80">
+                  adesão ao plano
+                </div>
               </div>
             </div>
           </div>
-        </div>
-</motion.div>
-    <motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-  viewport={{ once: true }}
- 
->
-   <div 
-        // style={{border:"solid red 1px"}} 
-        className="relative z-10">
-          <RightShowcase />
-        </div>
-</motion.div>
-       
+        </motion.div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent" />

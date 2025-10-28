@@ -33,7 +33,7 @@ export default function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Logo e missão */}
           <div>
-            <img src="/img/logo/png-dourado.png" alt="Logo Muscle Club" className="h-12 w-auto" />
+            <img src="/img/logo/png-branco.png" alt="Logo Muscle Club" className="h-12 w-auto" />
             <p className="mt-3 text-sm text-neutral-700">
               Transformando vidas com nutrição, treino e acompanhamento de verdade. Sua melhor versão começa aqui.
             </p>

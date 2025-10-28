@@ -195,7 +195,7 @@ function RightShowcase() {
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative isolate overflow-hidden bg-neutral-950 text-white">
+    <section className="relative isolate md:overflow-hidden overflow-visible bg-neutral-950 text-white">
       <Background />
 
       <div
@@ -233,7 +233,7 @@ const Hero: React.FC = () => {
           <div
             className="
     relative z-10
-    h-[55svh] md:h-auto
+    h-[55svh] md:h-auto 
     flex flex-col
     pt-3 md:pt-10
     items-center md:items-start

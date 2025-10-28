@@ -70,12 +70,12 @@ function ResultThumb({ beforeSrc, afterSrc }: { beforeSrc: string; afterSrc: str
         // largura responsiva: 1/2/3 por viewport
         "basis-[85%] sm:basis-[48%] md:basis-[31%]",
         // estética
-        "group relative overflow-hidden rounded-2xl border border-violet-200/60 bg-white/80 p-3 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md"
+        "group relative overflow-hidden rounded-2xl   p-3  transition hover:-translate-y-0.5 hover:shadow-md"
       )}
     >
       <div className="grid grid-cols-2 gap-2">
         {/* Antes */}
-        <div className="relative aspect-[3/5] w-full overflow-hidden rounded-xl ring-1 ring-violet-200/70">
+        <div className="relative aspect-[3/5] w-full overflow-hidden rounded-xl ">
           <img
             src={beforeSrc}
             alt="Antes"

@@ -3,7 +3,8 @@ import Image from "next/image";
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaLeaf, FaBolt, FaUsers } from "react-icons/fa6";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
+import { Reveal,Stagger,ZoomIn } from "../components/motion/Reveal";
 function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -111,6 +112,7 @@ function CTA() {
 
 function RightShowcase() {
   return (
+    <ZoomIn>
     <div
       className="
         relative mx-auto w-full max-w-[900px]
@@ -124,8 +126,14 @@ function RightShowcase() {
     h-[39svh] md:h-auto md:aspect-[6/4] md:max-h-[85svh]
     -mx-4 sm:-mx-6 md:mx-0
 
-    /* --- Sombras somente no desktop --- */
-    md:shadow-[0px_0px_60px_rgba(139,92,246,0.25)]
+      /* Sombra escura mais profunda */
+    md:shadow-[0_0_120px_40px_rgba(0,0,0,0.85)]
+
+    /* Fade nas bordas da imagem */
+    md:before:absolute md:before:inset-0
+    md:before:bg-gradient-to-b
+    md:before:from-transparent md:before:via-transparent md:before:to-black/30
+    md:before:pointer-events-none
     
         "
       >
@@ -181,6 +189,7 @@ function RightShowcase() {
         </div>
       </div>
     </div>
+    </ZoomIn>
   );
 }
 
@@ -231,8 +240,9 @@ const Hero: React.FC = () => {
     text-center md:text-left
   "
           >
-            {/* Pills: compacto no mobile */}
-            <div className="mb-3 flex flex-wrap gap-2">
+            <Stagger stagger={0.1}>
+             <Reveal y={18}>
+    <div className="mb-3 flex flex-wrap gap-2">
               <Pill>
                 <FaUsers className="text-violet-300" /> Comunidade Muscle Club
               </Pill>
@@ -243,7 +253,10 @@ const Hero: React.FC = () => {
                 <FaBolt className="text-violet-300" /> Plano simples
               </Pill>
             </div>
-            <h1
+  </Reveal>
+       
+             <Reveal  y={20}>
+        <h1
               className="
     text-balance text-[22px] leading-tight sm:text-3xl lg:text-4xl
     font-semibold text-center md:text-left
@@ -257,8 +270,9 @@ const Hero: React.FC = () => {
               da sua vida treinando menos e com um plano alimentar fácil de
               seguir?
             </h1>
-
-            <p
+  </Reveal>
+        <Reveal y={16} delay={0.05}>
+    <p
               className="
     mt-3 text-sm sm:text-base text-violet-100/90
     text-center md:text-left
@@ -268,37 +282,30 @@ const Hero: React.FC = () => {
               Com a Muscle Club isso é possível. Tudo isso de forma natural e
               sem ter a genética do CBUM.
             </p>
-            {/* Avatares + membros — visível apenas no mobile */}
-            <div
-              className="
-    flex md:hidden mt-4 justify-center
-  "
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  <img
-                    src="/img/avatar/avatar1.jpeg"
-                    className="h-8 w-8 rounded-full"
-                    alt=""
-                  />
-                  <img
-                    src="/img/avatar/avatar2.jpeg"
-                    className="h-8 w-8 rounded-full"
-                    alt=""
-                  />
-                  <img
-                    src="/img/avatar/avatar3.jpeg"
-                    className="h-8 w-8 rounded-full"
-                    alt=""
-                  />
-                </div>
-                <span className="text-xs font-medium text-violet-100/90">
-                  +300 membros
-                </span>
-              </div>
-            </div>
+  </Reveal>
 
-            <CTA />
+          
+            {/* Avatares + membros — visível apenas no mobile */}
+           <motion.div
+  initial={{ opacity: 0, x: 160 }}          // anda mais: 160px
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.95, ease: "easeOut", delay: 0.05 }} // dura quase 1s
+  className="flex md:hidden mt-4 justify-center"
+>
+  <div className="flex items-center gap-3">
+    <div className="flex -space-x-2">
+      <img src="/img/avatar/avatar1.jpeg" className="h-8 w-8 rounded-full" alt="" />
+      <img src="/img/avatar/avatar2.jpeg" className="h-8 w-8 rounded-full" alt="" />
+      <img src="/img/avatar/avatar3.jpeg" className="h-8 w-8 rounded-full" alt="" />
+    </div>
+    <span className="text-xs font-medium text-violet-100/90">+300 membros</span>
+  </div>
+</motion.div>
+
+ <Reveal y={16} delay={0.1}>
+    <CTA />
+  </Reveal>
+          </Stagger>
 
             {/* Estatísticas: escondidas no mobile para caber na tela */}
             <div className="mt-6 hidden sm:grid max-w-lg grid-cols-3 gap-4 text-center">

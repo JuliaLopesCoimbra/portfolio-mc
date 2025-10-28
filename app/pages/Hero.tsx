@@ -233,7 +233,7 @@ const Hero: React.FC = () => {
           <div
             className="
     relative z-10
-    h-[60svh] md:h-auto
+    h-[65svh] md:h-auto
     flex flex-col
     pt-3 md:pt-10
     items-center md:items-start

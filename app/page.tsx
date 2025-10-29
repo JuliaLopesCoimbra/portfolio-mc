@@ -32,6 +32,4 @@ export default function Home() {
 }
 
 // * ⁠arrumar foto principal no desktop
-// * ⁠fotos nos avatares
 //deixar a parte bonus mais chamativa, ta mt morto
-// parte de como funciona a consultoria, precisa melhorar

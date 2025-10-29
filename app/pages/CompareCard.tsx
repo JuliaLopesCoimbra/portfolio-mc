@@ -3,6 +3,8 @@
 import React, { useMemo, useRef, useCallback } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+
 
 /** util pra juntar classes */
 function cn(...classes: Array<string | false | null | undefined>) {
@@ -134,7 +136,7 @@ export default function SectionResults() {
       className="relative isolate overflow-hidden py-16 sm:py-24"
       style={{ background: "radial-gradient(circle at 50% 20%, #ffffff, #ede9fe 70%)" }}
     >
-      <PatternBG />
+      {/* <PatternBG /> */}
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -175,23 +177,42 @@ export default function SectionResults() {
               ))}
             </div>
 
-            {/* Botões centralizados */}
-            <div className="mt-4 flex items-center justify-center gap-3">
-              <button
-                onClick={() => scrollByViewport("left")}
-                className="rounded-xl border border-violet-200 bg-white/80 px-3 py-2 text-sm font-medium text-violet-700 shadow-sm hover:bg-white focus:outline-none focus:ring-2 focus:ring-violet-400"
-                aria-label="Anterior"
-              >
-                ◀
-              </button>
-              <button
-                onClick={() => scrollByViewport("right")}
-                className="rounded-xl border border-violet-200 bg-white/80 px-3 py-2 text-sm font-medium text-violet-700 shadow-sm hover:bg-white focus:outline-none focus:ring-2 focus:ring-violet-400"
-                aria-label="Próximo"
-              >
-                ▶
-              </button>
-            </div>
+          {/* Botões centralizados */}
+<div className="mt-4 flex items-center justify-center gap-4">
+  <button
+    onClick={() => scrollByViewport("left")}
+    className="
+      flex items-center justify-center
+      h-12 w-12 rounded-full      /* BOTÃO 100% REDONDO */
+      bg-violet-600 text-white    /* Fundo roxo + seta branca */
+      shadow-lg shadow-violet-500/20
+      hover:bg-violet-700 hover:scale-110 active:scale-95
+      transition
+      focus:outline-none focus:ring-2 focus:ring-violet-300
+    "
+    aria-label="Anterior"
+  >
+    <HiChevronLeft className="text-3xl" />  {/* SETA MAIS FORTE */}
+  </button>
+
+  <button
+    onClick={() => scrollByViewport("right")}
+    className="
+      flex items-center justify-center
+      h-12 w-12 rounded-full
+      bg-violet-600 text-white
+      shadow-lg shadow-violet-500/20
+      hover:bg-violet-700 hover:scale-110 active:scale-95
+      transition
+      focus:outline-none focus:ring-2 focus:ring-violet-300
+    "
+    aria-label="Próximo"
+  >
+    <HiChevronRight className="text-3xl" />
+  </button>
+</div>
+
+
           </div>
 
           {/* CTA centralizada */}

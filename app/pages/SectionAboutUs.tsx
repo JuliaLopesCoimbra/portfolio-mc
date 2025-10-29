@@ -169,7 +169,7 @@ export default function SectionAboutUs() {
         background: "radial-gradient(circle at 50% 20%, #ffffff, #ede9fe 70%)",
       }}
     >
-      <PatternBG />
+      {/* <PatternBG /> */}
 <motion.div
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}

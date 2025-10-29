@@ -182,6 +182,11 @@ function RightShowcase() {
               className="h-8 w-8 rounded-full"
               alt=""
             />
+              <img
+              src="/img/avatar/avatar4.jpeg"
+              className="h-8 w-8 rounded-full"
+              alt=""
+            />
           </div>
           <span className="text-xs font-medium text-violet-100/90">
             +300 membros
@@ -242,17 +247,18 @@ const Hero: React.FC = () => {
           >
             <Stagger stagger={0.1}>
              <Reveal y={18}>
-    <div className="mb-3 flex flex-wrap gap-2">
-              <Pill>
-                <FaUsers className="text-violet-300" /> Comunidade Muscle Club
-              </Pill>
-              <Pill className="hidden sm:inline-flex">
-                <FaLeaf className="text-violet-300" /> 100% Natural
-              </Pill>
-              <Pill className="hidden sm:inline-flex">
-                <FaBolt className="text-violet-300" /> Plano simples
-              </Pill>
-            </div>
+   <div className="mb-3 flex flex-wrap gap-2 justify-center md:justify-start">
+  <Pill>
+    <FaUsers className="text-violet-300" /> Comunidade Muscle Club
+  </Pill>
+  <Pill className="hidden sm:inline-flex">
+    <FaLeaf className="text-violet-300" /> 100% Natural
+  </Pill>
+  <Pill className="hidden sm:inline-flex">
+    <FaBolt className="text-violet-300" /> Plano simples
+  </Pill>
+</div>
+
   </Reveal>
        
              <Reveal  y={20}>
@@ -272,16 +278,18 @@ const Hero: React.FC = () => {
             </h1>
   </Reveal>
         <Reveal y={16} delay={0.05}>
-    <p
-              className="
+ <p
+  className="
     mt-3 text-sm sm:text-base text-violet-100/90
     text-center md:text-left
     max-w-[20rem] sm:max-w-[30rem] md:max-w-[36rem]
+    mx-auto md:mx-0 self-center md:self-start
   "
-            >
-              Com a Muscle Club isso é possível. Tudo isso de forma natural e
-              sem ter a genética do CBUM.
-            </p>
+>
+  Com a Muscle Club isso é possível. Tudo isso de forma natural e
+  sem ter a genética do CBUM.
+</p>
+
   </Reveal>
 
           

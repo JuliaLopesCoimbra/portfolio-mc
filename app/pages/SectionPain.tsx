@@ -1,7 +1,7 @@
 "use client";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -79,7 +79,8 @@ function Bullet({ children }: { children: React.ReactNode }) {
         <FaRegCircleXmark className="text-[18px] drop-shadow-[0_0_6px_rgba(239,68,68,0.35)]" />
       </span>
 
-      <span className="text-sm ">{children}</span>
+      <span className="text-sm text-justify [text-align:justify]">{children}</span>
+
 
       {/* acento lateral ao hover (discreto) */}
       <span className="pointer-events-none absolute inset-y-1 left-1 w-0.5 rounded-full bg-gradient-to-b from-red-400/70 via-red-500/60 to-red-400/70 opacity-0 transition group-hover:opacity-100" />
@@ -92,80 +93,79 @@ export default function SectionPain() {
     <section
       id="dor"
       className="relative isolate overflow-hidden py-16 sm:py-24"
-     style={{
-  background: `
+      style={{
+        background: `
     radial-gradient(1200px 600px at 10% 10%, rgba(88,28,135,0.15), transparent 70%),
     radial-gradient(900px 500px at 90% 30%, rgba(37,99,235,0.12), transparent 70%),
     radial-gradient(800px 500px at 50% 85%, rgba(147,51,234,0.10), transparent 70%),
     #000000
   `,
-}}
-
+      }}
     >
-      <PatternBG />
+      {/* <PatternBG /> */}
       <motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.7, ease: "easeOut" }}
-  viewport={{ once: true }}
- 
-> <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center px-6 md:px-10">
-        {/* Bloco centralizado */}
-        <div className="w-full max-w-2xl text-center">
-         
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        {" "}
+        <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center px-6 md:px-10">
+          {/* Bloco centralizado */}
+          <div className="w-full max-w-2xl text-center">
+            <h2 className="mt-2 text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl">
+              Você já tentou de tudo, mas...
+            </h2>
 
-          <h2 className="mt-2 text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl">
-            Você já tentou de tudo, mas...
-          </h2>
+            {/* Bullets: centralizados e responsivos */}
+            <ul className="mt-6 grid gap-3 sm:grid-cols-1 text-white ">
+              <Bullet>A dieta é impossível de seguir com sua rotina?</Bullet>
+              <Bullet>
+                O treino é genérico e não traz resultados? (parece Ctrl C + Ctrl
+                V)
+              </Bullet>
+              <Bullet>Você não sabe se está fazendo certo?</Bullet>
+              <Bullet>Sente que está jogando dinheiro fora?</Bullet>
+              <Bullet>Tem lesões ou limitações ignoradas?</Bullet>
+            </ul>
 
-          {/* Bullets: centralizados e responsivos */}
-          <ul className="mt-6 grid gap-3 sm:grid-cols-1 text-white ">
-            <Bullet>A dieta é impossível de seguir com sua rotina?</Bullet>
-            <Bullet>
-              O treino é genérico e não traz resultados? (parece Ctrl C + Ctrl V)
-            </Bullet>
-            <Bullet>Você não sabe se está fazendo certo?</Bullet>
-            <Bullet>Sente que está jogando dinheiro fora?</Bullet>
-            <Bullet>Tem lesões ou limitações ignoradas?</Bullet>
-          </ul>
+            {/* Box de reforço */}
+            {/* Box de reforço (mais chamativa e branca) */}
+            <div className="mx-auto mt-8 w-full max-w-xl rounded-2xl   p-1 text-center text-white ">
+              <p className="text-lg sm:text-xl leading-relaxed font-medium">
+                <strong className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]">
+                  O PROBLEMA NUNCA FOI VOCÊ.<br></br>
+                </strong>{" "}
+                <span className="text-white/90">
+                  Foi a falta de um{" "}
+                  <strong className="text-violet-300 font-semibold">
+                    ACOMPANHAMENTO
+                  </strong>{" "}
+                  e de um{" "}
+                  <strong className="text-violet-300 font-semibold">
+                    MÉTODO
+                  </strong>{" "}
+                  que respeita a sua realidade.
+                </span>
+              </p>
+            </div>
 
-          {/* Box de reforço */}
-       {/* Box de reforço (mais chamativa e branca) */}
-<div
-  className="mx-auto mt-8 w-full max-w-xl rounded-2xl   p-1 text-center text-white "
->
-  <p className="text-lg sm:text-xl leading-relaxed font-medium">
-    <strong className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]">
-      O PROBLEMA NUNCA FOI VOCÊ.<br></br>
-    </strong>{" "}
-    <span className="text-white/90">
-      Foi a falta de um{" "}
-      <strong className="text-violet-300 font-semibold">ACOMPANHAMENTO</strong>{" "}
-      e de um{" "}
-      <strong className="text-violet-300 font-semibold">MÉTODO</strong> que
-      respeita a sua realidade.
-    </span>
-  </p>
-</div>
-
-
-          {/* CTA central */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <button
-              onClick={handleWhatsAppClick}
-              className={cn(
-                "inline-flex items-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold transition",
-                "bg-violet-600 text-white shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
-              )}
-              aria-label="Garantir vaga"
-            >
-              <FaWhatsapp className="text-lg" /> GARANTIR VAGA
-            </button>
-         
+            {/* CTA central */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <button
+                onClick={handleWhatsAppClick}
+                className={cn(
+                  "inline-flex items-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold transition",
+                  "bg-violet-600 text-white shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
+                )}
+                aria-label="Garantir vaga"
+              >
+                <FaWhatsapp className="text-lg" /> GARANTIR VAGA
+              </button>
+            </div>
           </div>
         </div>
-      </div></motion.div>
-     
+      </motion.div>
 
       {/* divisor */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent" />

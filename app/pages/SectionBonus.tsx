@@ -95,7 +95,7 @@ export default function SectionBonus() {
     "radial-gradient(circle at 50% 20%, #ede9fe 0%, #ddd6fe 40%, #c4b5fd 70%)",
 }}
 >
-      <PatternBG />
+      {/* <PatternBG /> */}
 <motion.div
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}

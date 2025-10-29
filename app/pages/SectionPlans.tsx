@@ -1,7 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 
 /** util */
 function cn(...classes: Array<string | false | null | undefined>): string {
@@ -24,10 +24,49 @@ const PERIOD_OPTIONS = [
 type CategoryKey = typeof CATEGORY_OPTIONS[number]["key"];
 type PeriodKey = typeof PERIOD_OPTIONS[number]["key"];
 
-/** WhatsApp */
-function openWhatsApp(categoryLabel: string, periodLabel: string): void {
-  const text = `Quero saber melhor sobre o plano da Muscle Club (${categoryLabel} • ${periodLabel})`;
-  const url = `https://wa.me/5531996367096?text=${encodeURIComponent(text)}`;
+/** WhatsApp (conforme documento fornecido) */
+const WHATSAPP_PHONE = "5531936180154"; // sem espaços
+const PERIOD_LABEL_MAP: Record<PeriodKey, string> = {
+  mensal: "Mensal",
+  trimestral: "Trimestral",
+  semestral: "Semestral",
+};
+
+function getTypeLabelFromCategory(category: CategoryKey): string {
+  // "Só dieta" e "Só treino" -> "(Dieta ou Treino)"
+  // "Dieta + Treino" -> "(Dieta + Treino)"
+  return category === "combo" ? "Dieta + Treino" : "Dieta ou Treino";
+}
+
+function getWhatsAppUrl(category: CategoryKey, period: PeriodKey): string {
+  const periodLabel = PERIOD_LABEL_MAP[period];
+  const typeLabel = getTypeLabelFromCategory(category);
+
+  // Texto exatamente como no documento:
+  // "Olá, vim da página da Muscle Club e tenho interesse no plano {Mensal|Trimestral|Semestral} ({Dieta ou Treino|Dieta + Treino})"
+  const text = `Olá, vim da página da Muscle Club e tenho interesse no plano ${periodLabel} (${typeLabel})`;
+
+  const params = new URLSearchParams({
+    phone: WHATSAPP_PHONE,
+    text: encodeURIComponent(text), // o documento já traz encode no texto; mantemos encode seguro aqui
+    type: "phone_number",
+    app_absent: "0",
+  });
+
+  // Observação: quando usamos URLSearchParams + encode manual no text,
+  // o encode pode ficar duplo. Se preferir 100% idêntico ao documento,
+  // use encode só no final, assim:
+  // const base = `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(text)}&type=phone_number&app_absent=0`;
+  // return base;
+
+  // Para evitar encode duplo do text, vamos montar manualmente como no doc:
+  return `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(
+    text
+  )}&type=phone_number&app_absent=0`;
+}
+
+function openWhatsAppByKeys(category: CategoryKey, period: PeriodKey): void {
+  const url = getWhatsAppUrl(category, period);
   window.open(url, "_blank");
 }
 
@@ -121,7 +160,6 @@ function PlanCard({
   periodKey,
   periodLabel,
   categoryKey,
-  categoryLabel,
 }: PlanCardProps) {
   const features = useMemo(
     () => getFeatures(categoryKey, periodKey),
@@ -154,7 +192,7 @@ function PlanCard({
       </ul>
 
       <button
-        onClick={() => openWhatsApp(categoryLabel, periodLabel)}
+        onClick={() => openWhatsAppByKeys(categoryKey, periodKey)}
         className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
       >
         <FaWhatsapp />
@@ -189,76 +227,76 @@ export default function SectionPlans() {
           "radial-gradient(1200px 800px at 50% 10%, #28164b 0%, #1a1238 40%, #0f0b25 100%)",
       }}
     >
-      <PatternBG />
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.7, ease: "easeOut" }}
-  viewport={{ once: true }}
- 
-><div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
-        <h2 className="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl">
-          Escolha o plano ideal para você
-        </h2>
-        <p className="mt-2 max-w-prose text-sm text-neutral-100">
-          Selecione o tipo de plano e o período. Todos contam com suporte próximo e a qualidade Muscle Club.
-        </p>
+      {/* <PatternBG /> */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
+          <h2 className="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl">
+            Escolha o plano ideal para você
+          </h2>
+          <p className="mt-2 max-w-prose text-sm text-neutral-100">
+            Selecione o tipo de plano e o período. Todos contam com suporte próximo e a qualidade Muscle Club.
+          </p>
 
-        {/* Seletores */}
-        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          {/* Tipo de plano */}
-          <div>
-            <span className="mb-2 block text-sm font-medium text-violet-100">
-              Tipo de plano
-            </span>
-            <div className="flex flex-wrap gap-2">
-              {CATEGORY_OPTIONS.map((c) => (
-                <button
-                  key={c.key}
-                  onClick={() => setCategory(c.key)}
-                  className={cn(
-                    "rounded-xl border px-4 py-2 text-sm font-medium transition",
-                    category === c.key
-                      ? "border-violet-400 bg-violet-600 text-white"
-                      : "border-violet-200/50 bg-white/10 text-violet-100 hover:bg-white/20"
-                  )}
-                >
-                  {c.label}
-                </button>
-              ))}
+          {/* Seletores */}
+          <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            {/* Tipo de plano */}
+            <div>
+              <span className="mb-2 block text-sm font-medium text-violet-100">
+                Tipo de plano
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {CATEGORY_OPTIONS.map((c) => (
+                  <button
+                    key={c.key}
+                    onClick={() => setCategory(c.key)}
+                    className={cn(
+                      "rounded-xl border px-4 py-2 text-sm font-medium transition",
+                      category === c.key
+                        ? "border-violet-4 00 bg-violet-600 text-white"
+                        : "border-violet-200/50 bg-white/10 text-violet-100 hover:bg-white/20"
+                    )}
+                  >
+                    {c.label}
+                  </button>
+                ))}
+              </div>
             </div>
+
+            {/* (Se quiser recolocar seletores de período aqui, basta adicionar) */}
           </div>
 
-       
-        </div>
+          {/* Cards (um por período) */}
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {PERIOD_OPTIONS.map((p) => (
+              <PlanCard
+                key={p.key}
+                periodKey={p.key}
+                periodLabel={p.label}
+                categoryKey={category}
+                categoryLabel={
+                  CATEGORY_OPTIONS.find((c) => c.key === category)?.label || ""
+                }
+              />
+            ))}
+          </div>
 
-        {/* Cards (um por período) */}
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {PERIOD_OPTIONS.map((p) => (
-            <PlanCard
-              key={p.key}
-              periodKey={p.key}
-              periodLabel={p.label}
-              categoryKey={category}
-              categoryLabel={
-                CATEGORY_OPTIONS.find((c) => c.key === category)?.label || ""
-              }
-            />
-          ))}
+          {/* CTA geral */}
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => openWhatsAppByKeys(category, period)}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-700 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-violet-800 focus:outline-none focus:ring-2 focus:ring-violet-400"
+            >
+              <FaWhatsapp />
+              Quero saber melhor sobre o plano da Muscle Club
+            </button>
+          </div>
         </div>
-
-        {/* CTA geral */}
-        <div className="mt-8 flex justify-center">
-          <button
-            onClick={() => openWhatsApp(selectedCategoryLabel, selectedPeriodLabel)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-700 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-violet-800 focus:outline-none focus:ring-2 focus:ring-violet-400"
-          >
-            <FaWhatsapp />
-            Quero saber melhor sobre o plano da Muscle Club
-          </button>
-        </div>
-      </div></motion.div>
-      
+      </motion.div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400/70 to-transparent" />
     </section>

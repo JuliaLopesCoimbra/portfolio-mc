@@ -82,14 +82,26 @@ export default function SectionFeedback() {
     {
       name: "Carolina C.",
       videoUrl: "/video/video3.mp4",
-      quote: "Eu já tinha tentado vários treinos, mas agora sinto evolução real sem dores.",
+      quote: "O que você busca é um atendimento humanizado e de perto, eu tenho certeza que você não vai se arrepender de entrar para esse time",
       highlight: "Treino adaptado às minhas limitações com resultado visível.",
+    },
+     {
+      name: "Maria Luiza",
+      videoUrl: "/video/video4.mp4",
+      quote: "Foi muito dificil fazer tudo sozinha e eu não saia do lugar, até que então num processo de 2 anos eu evolui muito.",
+      highlight: "Evolução real com acompanhamento e direção certa.",
+    },
+     {
+      name: "Nicoli O.",
+      videoUrl: "/video/video5.mp4",
+      quote: "Ele realmente olha sua rotina e objetivos e monta um treino individualizado para você.",
+      highlight: "Resultados que eu nunca conseguiria sozinha.",
     },
   ];
 
   return (
     <section id="feedbacks" className="relative isolate overflow-hidden py-16 sm:py-24" style={{ background: "radial-gradient(circle at 50% 20%, #ffffff, #ede9fe 70%)" }}>
-      <PatternBG />
+      {/* <PatternBG /> */}
 <motion.div
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}

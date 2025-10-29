@@ -1,15 +1,6 @@
 "use client";
-import {
-  FaWhatsapp,
-  FaSearch,
-  FaClipboardList,
-  FaHeadset,
-} from "react-icons/fa";
 import { motion } from "framer-motion";
-
-function cn(...classes: Array<string | false | null | undefined>) {
-  return classes.filter(Boolean).join(" ");
-}
+import { FaWhatsapp } from "react-icons/fa";
 
 function handleWhatsAppClick() {
   window.open(
@@ -56,166 +47,142 @@ function PatternBG() {
   );
 }
 
-// 🔧 Aqui a prop image agora é opcional
-function StepCard({
-  number,
-  title,
-  text,
-  icon,
-  image,
-  flip = false,
-}: {
-  number: string;
-  title: string;
-  text: React.ReactNode;
-  icon: React.ReactNode;
-  image?: string;
-  flip?: boolean;
-}) {
-  return (
-    <div
-      className={cn(
-        "grid items-center gap-6 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset] backdrop-blur",
-        image ? "md:grid-cols-2" : "md:grid-cols-1"
-      )}
-    >
-      {/* Texto */}
-      <div className={cn("order-2", flip ? "md:order-2" : "md:order-1")}>
-        <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-violet-200">
-          <span className="grid h-6 w-6 place-items-center rounded-md bg-violet-500/20 text-violet-200">
-            {icon}
-          </span>
-          <span className="font-semibold tracking-wide text-violet-100">
-            Passo {number}
-          </span>
-        </div>
-        <h3 className="text-lg font-semibold text-white sm:text-xl">{title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-violet-100/85">{text}</p>
-      </div>
-
-      {/* Imagem — só aparece se houver image */}
-      {image && (
-        <div className={cn("order-1", flip ? "md:order-1" : "md:order-2")}>
-          <div className="relative overflow-hidden rounded-2xl">
-            <div className="absolute -inset-[1px] rounded-2xl" />
-            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-black/20">
-              <img
-                src={image}
-                alt="Ilustração do passo"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
 export default function SectionHowV3() {
   return (
     <section
       id="funciona"
       className="relative isolate overflow-hidden py-16 sm:py-24"
       style={{
+        // ⬇️ mantém exatamente o seu fundo
         background:
           "radial-gradient(1200px 800px at 50% 10%, #28164b 0%, #1a1238 40%, #0f0b25 100%)",
       }}
     >
       <PatternBG />
+
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
         viewport={{ once: true }}
+        className="relative mx-auto w-full max-w-7xl px-6 md:px-10"
       >
-        <div className="relative mx-auto w-full max-w-7xl px-6 md:px-10">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-[11px] font-semibold tracking-widest text-violet-300">
-              COMO FUNCIONA
-            </p>
-            <h2 className="mt-2 text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl">
-              COMO A MUSCLE CLUB FUNCIONA?
-            </h2>
-            <p className="mt-2 text-sm text-violet-100/80">
-              Veja como construímos seu protocolo: entendimento, planejamento do
-              zero e acompanhamento real.
-            </p>
-          </div>
+        {/* header */}
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-[11px] font-semibold tracking-widest text-violet-300">
+            COMO FUNCIONA
+          </p>
+          <h2 className="mt-2 text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl">
+            COMO A MUSCLE CLUB FUNCIONA?
+          </h2>
+          <p className="mt-2 text-sm text-violet-100/80">
+            Veja como construímos seu protocolo: entendimento, planejamento do
+            zero e acompanhamento real.
+          </p>
+        </div>
 
-          <div className="mt-10 grid gap-6">
-            {/* 🔹 Foto 1 sem image */}
-            <StepCard
-              number="1"
-              title="Entendimento completo de você"
-              icon={<FaSearch />}
-              text={
-                <>
-                  Antes de prescrever qualquer plano,{" "}
-                  <strong>nós entendemos você por completo</strong>: sua rotina,
-                  alimentação, limitações e estilo de vida. Com base nesses
-                  dados, desenvolvemos um planejamento estratégico e
-                  personalizado que{" "}
-                  <strong>
-                    maximiza seus resultados e te leva para mais perto do shape
-                    que sempre desejou.
-                  </strong>
-                </>
-              }
-            />
+       {/* timeline sem imagens - linha que “para” nos números */}
+<div className="relative mx-auto mt-10 max-w-3xl">
 
-            {/* 🔹 Foto 2 e 3 mantêm imagem */}
-            <StepCard
-              number="2"
-              title="Planejamento individualizado (até 5 dias)"
-              icon={<FaClipboardList />}
-              image="img/platform/consultoria03.png"
-              flip
-              text={
-                <>
-                  Após a análise dos seus dados e objetivos,{" "}
-                  <strong>
-                    elaboramos um planejamento individualizado, desenvolvido do
-                    zero, com base em evidências{" "}
-                  </strong>{" "}
-                  e prática profissional. Em até 5 dias úteis, você recebe seu
-                  protocolo completo de dieta e/ou treino, pensado para entregar
-                  resultado, manter a constância e se encaixar perfeitamente na
-                  sua realidade.
-                </>
-              }
-            />
+  <ul className="space-y-6">
 
-            <StepCard
-              number="3"
-              title="Acompanhamento constante (não te abandonamos)"
-              icon={<FaHeadset />}
-              image="img/platform/acompanha.png"
-              text={
-                <>
-                  <strong>Você não vai ficar sozinho nessa.</strong> Toda semana
-                  analisamos sua evolução e fazemos os ajustes necessários para
-                  que o plano continue funcionando na sua rotina. E se algo sair
-                  do eixo, você tem{" "}
-                  <strong>acesso direto ao seu profissional via WhatsApp</strong>
-                  , garantindo suporte rápido, motivação constante e resultado
-                  contínuo.
-                </>
-              }
-            />
-          </div>
+    {/* 01 (primeiro): só conector de baixo */}
+    <li className="relative rounded-2xl p-5">
+      {/* círculo */}
+      <div className="absolute left-6 top-5 -translate-x-1/2">
+        <div className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-b from-violet-500 to-violet-600 text-[11px] font-bold text-white shadow-[0_6px_20px_rgba(139,92,246,0.35)] ring-1 ring-white/20">
+          01
+        </div>
+      </div>
 
-          <div className="mx-auto mt-10 flex max-w-2xl flex-wrap items-center justify-center gap-3">
-            <button
-              onClick={handleWhatsAppClick}
-              className={cn(
-                "inline-flex items-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold transition",
-                "bg-violet-600 text-white shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
-              )}
-            >
-              <FaWhatsapp className="text-lg" /> BORA GARANTIR VAGA
-            </button>
-          </div>
+      {/* conector abaixo do número (vai até o próximo item) */}
+      <div className="absolute left-6 -translate-x-1/2"
+           style={{ top: "63px", bottom: "-24px" }}       /* 29px = centro do círculo; -24px = espaço (space-y-6) */
+      >
+        <div className="h-full w-[2px] bg-gradient-to-b from-violet-400/60 via-violet-400/20 to-transparent" />
+      </div>
+
+      <h3 className="pl-10 text-lg font-semibold text-white">Entendimento completo de você</h3>
+      <p className="mt-2 pl-10 text-sm leading-relaxed text-violet-100/85">
+        Antes de prescrever qualquer plano, <strong>nós entendemos você por completo</strong>: sua
+        rotina, alimentação, limitações e estilo de vida. Com base nesses dados,
+        desenvolvemos um planejamento estratégico e personalizado que <strong>maximiza seus
+        resultados</strong> e te leva para mais perto do shape que sempre desejou.
+      </p>
+    </li>
+
+    {/* 02 (meio): conector em cima e embaixo */}
+    <li className="relative rounded-2xl p-5">
+      {/* círculo */}
+      <div className="absolute left-6 top-5 -translate-x-1/2">
+        <div className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-b from-violet-500 to-violet-600 text-[11px] font-bold text-white shadow-[0_6px_20px_rgba(139,92,246,0.35)] ring-1 ring-white/20">
+          02
+        </div>
+      </div>
+
+      {/* conector acima do número (vem do item anterior) */}
+      <div className="absolute left-6 -translate-x-1/2"
+           style={{ top: "-38px", height: "53px" }}       /* -24px cobre o gap; 53px ≈ (gap 24 + centro 29) */
+      >
+        <div className="h-full w-[2px] bg-gradient-to-b from-transparent via-violet-400/20 to-violet-400/60" />
+      </div>
+
+      {/* conector abaixo do número (vai até o próximo) */}
+      <div className="absolute left-6 -translate-x-1/2"
+           style={{ top: "63px", bottom: "-24px" }}
+      >
+        <div className="h-full w-[2px] bg-gradient-to-b from-violet-400/60 via-violet-400/20 to-transparent" />
+      </div>
+
+      <h3 className="pl-10 text-lg font-semibold text-white">Planejamento individualizado (até 5 dias)</h3>
+      <p className="mt-2 pl-10 text-sm leading-relaxed text-violet-100/85">
+        Após a análise dos seus dados e objetivos, <strong>elaboramos um planejamento
+        individualizado, do zero, com base em evidências</strong> e prática profissional.
+        Em até 5 dias úteis, você recebe seu protocolo completo de dieta e/ou treino,
+        pensado para entregar resultado, manter a constância e <strong>se encaixar na sua
+        realidade</strong>.
+      </p>
+    </li>
+
+    {/* 03 (último): só conector acima; a linha termina no número */}
+    <li className="relative rounded-2xl p-5">
+      {/* círculo */}
+      <div className="absolute left-6 top-5 -translate-x-1/2">
+        <div className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-b from-violet-500 to-violet-600 text-[11px] font-bold text-white shadow-[0_6px_20px_rgba(139,92,246,0.35)] ring-1 ring-white/20">
+          03
+        </div>
+      </div>
+
+      {/* conector acima do número (vem do item anterior) */}
+      <div className="absolute left-6 -translate-x-1/2"
+           style={{ top: "-32px", height: "45px" }}
+      >
+        <div className="h-full w-[2px] bg-gradient-to-b  via-violet-400/20 to-violet-400/60" />
+      </div>
+
+      <h3 className="pl-10 text-lg font-semibold text-white">Acompanhamento constante (não te abandonamos)</h3>
+      <p className="mt-2 pl-10 text-sm leading-relaxed text-violet-100/85">
+        <strong>Você não vai ficar sozinho nessa.</strong> Toda semana analisamos sua evolução e
+        ajustamos o plano para continuar funcionando na sua rotina. E, se algo sair
+        do eixo, você tem <strong>acesso direto ao seu profissional via WhatsApp</strong>, garantindo
+        suporte rápido, motivação constante e resultado contínuo.
+      </p>
+      
+    </li>
+    
+  </ul>
+</div>
+
+
+        {/* CTA mantém seu estilo e copy */}
+        <div className="mx-auto mt-10 flex max-w-2xl flex-wrap items-center justify-center gap-3">
+          <button
+            onClick={handleWhatsAppClick}
+            className="inline-flex items-center gap-2 rounded-2xl bg-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
+          >
+            <FaWhatsapp className="text-lg" />
+            BORA GARANTIR VAGA
+          </button>
         </div>
       </motion.div>
 

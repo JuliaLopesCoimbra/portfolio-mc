@@ -31,5 +31,5 @@ export default function Home() {
   );
 }
 
-// * ⁠arrumar foto principal no desktop
+//borrado no hero
 //deixar a parte bonus mais chamativa, ta mt morto

@@ -20,34 +20,82 @@ function handleWhatsAppClick() {
 function Background() {
   return (
     <div aria-hidden className="absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0" style={{ background: "#000000" }} />
+      <div  style={{
+        background: `
+    radial-gradient(1200px 600px at 10% 10%, rgba(88,28,135,0.15), transparent 70%),
+    radial-gradient(900px 500px at 90% 30%, rgba(37,99,235,0.12), transparent 70%),
+    radial-gradient(800px 500px at 50% 85%, rgba(147,51,234,0.10), transparent 70%),
+    #000000
+  `,
+      }} className="absolute inset-0 " />
 
-      <div className="absolute inset-y-0 -inset-x-[1vw] hidden lg:block overflow-hidden">
-        {/* faixa de blend à esquerda */}
+      <div
+      
+       className="absolute inset-y-0 -inset-x-[1vw] hidden lg:block overflow-hidden">
+        {/* IMAGEM BASE */}
+  <div className="relative h-full w-full [--feather-left:12vw] md:[--feather-left:10vw] lg:[--feather-left:8vw]">
+  <Image
+    src="/img/platform/hero-desktop.jpg"
+    alt=""
+    fill
+    priority
+    fetchPriority="high"
+    sizes="100vw"
+    className="object-cover lg:translate-x-[18vw]
+               [mask-mode:alpha] [mask-repeat:no-repeat] [mask-size:100%_100%]
+               [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%]"
+    style={{
+      objectPosition: "85% center",
+      // Feather suave na esquerda: 0 → transparente, até var(--feather-left) → opaco
+      maskImage:
+        "linear-gradient(to right, rgba(0,0,0,0) 0, rgba(0,0,0,0.02) calc(var(--feather-left) * 0.25), rgba(0,0,0,0.15) calc(var(--feather-left) * 0.5), rgba(0,0,0,0.4) calc(var(--feather-left) * 0.75), rgba(0,0,0,0.85) var(--feather-left), rgba(0,0,0,1) calc(var(--feather-left) + 1px))",
+      WebkitMaskImage:
+        "linear-gradient(to right, rgba(0,0,0,0) 0, rgba(0,0,0,0.02) calc(var(--feather-left) * 0.25), rgba(0,0,0,0.15) calc(var(--feather-left) * 0.5), rgba(0,0,0,0.4) calc(var(--feather-left) * 0.75), rgba(0,0,0,0.85) var(--feather-left), rgba(0,0,0,1) calc(var(--feather-left) + 1px))",
+      transform: "translateZ(0)", // ajuda a manter suave
+    }}
+  />
+
+  {/* (Opcional) Vignette sutil pra integrar melhor sem “escurecer” visível */}
+  <div
+    aria-hidden
+    className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_60%_at_8%_50%,rgba(0,0,0,0.35),transparent_70%)]"
+  />
+</div>
+        {/* FAIXA BORRADA (sem backdrop) */}
         <div
           className="
-            absolute left-0 top-0 bottom-0 z-[1]
-            w-[22vw] pointer-events-none
-            bg-gradient-to-r from-black/55 via-black/30 to-transparent
-            backdrop-blur-[10px]
+            pointer-events-none absolute inset-0
+            [clip-path:inset(0_calc(1000%-22vw)_0_0)]   /* mostra só a faixa da esquerda */
           "
-        />
-        <Image
-          src="/img/platform/hero-desktop.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover lg:translate-x-[18vw] lg:scale-[1] will-change-transform"
-          style={{ objectPosition: "85% center" }}
-        />
+          aria-hidden
+        >
+          {/* Duplicata da imagem, borrada */}
+          <Image
+            src="/img/platform/hero-desktop.jpg"
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            className="object-cover lg:translate-x-[18vw]"
+            style={{
+              objectPosition: "85% center",
+              filter: "blur(10px)",
+              transform: "translateZ(0)", // força layer sem custar layout
+            }}
+          />
+          {/* Suaviza a borda direita da faixa */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/30 to-transparent" />
+        </div>
       </div>
 
-      {/* Vignette/grade/noise permanecem cobrindo a viewport normal */}
+      {/* Vignette global */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,transparent_55%,rgba(0,0,0,0.35)_100%)]" />
     </div>
   );
 }
+
+
 
 function Pill({
   children,
@@ -174,7 +222,7 @@ const Hero: React.FC = () => {
         >
           <div
             className="
-              relative z-10
+              relative z-10 
               h-[65svh] lg:h-auto
               flex flex-col
               pt-3 lg:pt-10
@@ -202,7 +250,7 @@ const Hero: React.FC = () => {
                   className="
                     text-balance text-[22px] leading-tight sm:text-3xl lg:text-4xl
                     font-semibold text-center lg:text-left
-                    max-w-[28rem] sm:max-w-[42rem] lg:max-w-[50rem]
+                    max-w-[28rem] sm:max-w-[42rem] lg:max-w-[50rem] 
                   "
                 >
                   Já pensou alcançar o melhor{" "}

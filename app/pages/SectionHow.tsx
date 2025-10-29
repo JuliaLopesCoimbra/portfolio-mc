@@ -181,7 +181,7 @@ export default function SectionHowV3() {
             className="inline-flex items-center gap-2 rounded-2xl bg-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
           >
             <FaWhatsapp className="text-lg" />
-            BORA GARANTIR VAGA
+            BORA GARANTIR SUA VAGA
           </button>
         </div>
       </motion.div>

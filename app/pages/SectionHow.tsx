@@ -58,7 +58,7 @@ export default function SectionHowV3() {
           "radial-gradient(1200px 800px at 50% 10%, #28164b 0%, #1a1238 40%, #0f0b25 100%)",
       }}
     >
-      <PatternBG />
+      {/* <PatternBG /> */}
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}

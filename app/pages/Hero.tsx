@@ -20,48 +20,48 @@ function handleWhatsAppClick() {
 function Background() {
   return (
     <div aria-hidden className="absolute inset-0 overflow-hidden">
-      <div  style={{
-        background: `
+      <div
+        style={{
+          background: `
     radial-gradient(1200px 600px at 10% 10%, rgba(88,28,135,0.15), transparent 70%),
     radial-gradient(900px 500px at 90% 30%, rgba(37,99,235,0.12), transparent 70%),
     radial-gradient(800px 500px at 50% 85%, rgba(147,51,234,0.10), transparent 70%),
     #000000
   `,
-      }} className="absolute inset-0 " />
+        }}
+        className="absolute inset-0 "
+      />
 
-      <div
-      
-       className="absolute inset-y-0 -inset-x-[1vw] hidden lg:block overflow-hidden">
+      <div className="absolute inset-y-0 -inset-x-[1vw] hidden lg:block overflow-hidden">
         {/* IMAGEM BASE */}
-  <div className="relative h-full w-full [--feather-left:12vw] md:[--feather-left:10vw] lg:[--feather-left:8vw]">
-  <Image
-    src="/img/platform/hero-desktop.jpg"
-    alt=""
-    fill
-    priority
-    fetchPriority="high"
-    sizes="100vw"
-    className="object-cover lg:translate-x-[18vw]
-               [mask-mode:alpha] [mask-repeat:no-repeat] [mask-size:100%_100%]
-               [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%]"
-    style={{
-      objectPosition: "85% center",
-      // Feather suave na esquerda: 0 → transparente, até var(--feather-left) → opaco
-      maskImage:
-        "linear-gradient(to right, rgba(0,0,0,0) 0, rgba(0,0,0,0.02) calc(var(--feather-left) * 0.25), rgba(0,0,0,0.15) calc(var(--feather-left) * 0.5), rgba(0,0,0,0.4) calc(var(--feather-left) * 0.75), rgba(0,0,0,0.85) var(--feather-left), rgba(0,0,0,1) calc(var(--feather-left) + 1px))",
-      WebkitMaskImage:
-        "linear-gradient(to right, rgba(0,0,0,0) 0, rgba(0,0,0,0.02) calc(var(--feather-left) * 0.25), rgba(0,0,0,0.15) calc(var(--feather-left) * 0.5), rgba(0,0,0,0.4) calc(var(--feather-left) * 0.75), rgba(0,0,0,0.85) var(--feather-left), rgba(0,0,0,1) calc(var(--feather-left) + 1px))",
-      transform: "translateZ(0)", // ajuda a manter suave
-    }}
-  />
+        <div className="relative h-full w-full [--feather-left:12vw] md:[--feather-left:10vw] lg:[--feather-left:8vw]">
+          <Image
+            src="/img/platform/hero-desktop-hd.webp" // ou .webp
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            quality={90}
+            className="object-cover lg:translate-x-[18vw]
+    [mask-mode:alpha] [mask-repeat:no-repeat] [mask-size:100%_100%]
+    [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%]"
+            style={{
+              objectPosition: "85% center",
+              // dica: teste sem o translateZ(0) — em alguns GPUs pode rasterizar menor
+              // transform: "translateZ(0)",
+              maskImage:
+                "linear-gradient(to right, rgba(0,0,0,0) 0, rgba(0,0,0,0.02) calc(var(--feather-left)*0.25), rgba(0,0,0,0.15) calc(var(--feather-left)*0.5), rgba(0,0,0,0.4) calc(var(--feather-left)*0.75), rgba(0,0,0,0.85) var(--feather-left), rgba(0,0,0,1) calc(var(--feather-left) + 1px))",
+              WebkitMaskImage:
+                "linear-gradient(to right, rgba(0,0,0,0) 0, rgba(0,0,0,0.02) calc(var(--feather-left)*0.25), rgba(0,0,0,0.15) calc(var(--feather-left)*0.5), rgba(0,0,0,0.4) calc(var(--feather-left)*0.75), rgba(0,0,0,0.85) var(--feather-left), rgba(0,0,0,1) calc(var(--feather-left) + 1px))",
+            }}
+          />
 
-  {/* (Opcional) Vignette sutil pra integrar melhor sem “escurecer” visível */}
-  <div
-    aria-hidden
-    className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_60%_at_8%_50%,rgba(0,0,0,0.35),transparent_70%)]"
-  />
-</div>
-        {/* FAIXA BORRADA (sem backdrop) */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_60%_at_8%_50%,rgba(0,0,0,0.35),transparent_70%)]"
+          />
+        </div>
         <div
           className="
             pointer-events-none absolute inset-0
@@ -71,7 +71,7 @@ function Background() {
         >
           {/* Duplicata da imagem, borrada */}
           <Image
-            src="/img/platform/hero-desktop.jpg"
+            src="/img/platform/hero-desktop-hd.webp"
             alt=""
             fill
             priority
@@ -94,8 +94,6 @@ function Background() {
     </div>
   );
 }
-
-
 
 function Pill({
   children,
@@ -122,7 +120,7 @@ function CTA() {
         // antes: "mt-8 flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start md:items-start"
         "mt-1 flex w-full flex-col items-center gap-3",
         "sm:flex-row sm:justify-center sm:items-center", // tablet centralizado
-        "lg:justify-start lg:items-start"                // desktop alinha à esquerda
+        "lg:justify-start lg:items-start" // desktop alinha à esquerda
       )}
     >
       <button
@@ -147,7 +145,6 @@ function CTA() {
     </div>
   );
 }
-
 
 function RightShowcase() {
   return (
@@ -177,7 +174,6 @@ function RightShowcase() {
             style={{ objectPosition: "center bottom" }}
           />
         </div>
-
       </div>
     </ZoomIn>
   );
@@ -234,7 +230,8 @@ const Hero: React.FC = () => {
               <Reveal y={18}>
                 <div className="mb-3 flex flex-wrap gap-2 justify-center lg:justify-start">
                   <Pill>
-                    <FaUsers className="text-violet-300" /> Comunidade Muscle Club
+                    <FaUsers className="text-violet-300" /> Comunidade Muscle
+                    Club
                   </Pill>
                   <Pill className="hidden sm:inline-flex">
                     <FaLeaf className="text-violet-300" /> 100% Natural
@@ -254,8 +251,11 @@ const Hero: React.FC = () => {
                   "
                 >
                   Já pensou alcançar o melhor{" "}
-                  <span className="bg-violet-700 bg-clip-text text-transparent">shape</span>{" "}
-                  da sua vida treinando menos e com um plano alimentar fácil de seguir?
+                  <span className="bg-violet-700 bg-clip-text text-transparent">
+                    shape
+                  </span>{" "}
+                  da sua vida treinando menos e com um plano alimentar fácil de
+                  seguir?
                 </h1>
               </Reveal>
 
@@ -268,7 +268,8 @@ const Hero: React.FC = () => {
                     mx-auto lg:mx-0 self-center lg:self-start
                   "
                 >
-                  Com a Muscle Club isso é possível. Tudo isso de forma natural e sem ter a genética do CBUM.
+                  Com a Muscle Club isso é possível. Tudo isso de forma natural
+                  e sem ter a genética do CBUM.
                 </p>
               </Reveal>
 
@@ -281,12 +282,30 @@ const Hero: React.FC = () => {
               >
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
-                    <img src="/img/avatar/avatar1.jpeg" className="h-8 w-8 rounded-full" alt="" />
-                    <img src="/img/avatar/avatar2.jpeg" className="h-8 w-8 rounded-full" alt="" />
-                    <img src="/img/avatar/avatar3.jpeg" className="h-8 w-8 rounded-full" alt="" />
-                    <img src="/img/avatar/avatar4.jpeg" className="h-8 w-8 rounded-full" alt="" />
+                    <img
+                      src="/img/avatar/avatar1.jpeg"
+                      className="h-8 w-8 rounded-full"
+                      alt=""
+                    />
+                    <img
+                      src="/img/avatar/avatar2.jpeg"
+                      className="h-8 w-8 rounded-full"
+                      alt=""
+                    />
+                    <img
+                      src="/img/avatar/avatar3.jpeg"
+                      className="h-8 w-8 rounded-full"
+                      alt=""
+                    />
+                    <img
+                      src="/img/avatar/avatar4.jpeg"
+                      className="h-8 w-8 rounded-full"
+                      alt=""
+                    />
                   </div>
-                  <span className="text-xs font-medium text-violet-100/90">+300 membros</span>
+                  <span className="text-xs font-medium text-violet-100/90">
+                    +300 membros
+                  </span>
                 </div>
               </motion.div>
             </Stagger>
@@ -300,15 +319,21 @@ const Hero: React.FC = () => {
             <div className="mt-6 hidden sm:grid w-full max-w-lg grid-cols-3 gap-4 text-center mx-auto">
               <div className="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur">
                 <div className="text-2xl font-semibold text-white">2000+</div>
-                <div className="mt-1 text-xs text-violet-200/80">shapes transformados</div>
+                <div className="mt-1 text-xs text-violet-200/80">
+                  shapes transformados
+                </div>
               </div>
               <div className="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur">
                 <div className="text-2xl font-semibold text-white">3</div>
-                <div className="mt-1 text-xs text-violet-200/80">mentores dedicados</div>
+                <div className="mt-1 text-xs text-violet-200/80">
+                  mentores dedicados
+                </div>
               </div>
               <div className="flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur">
                 <div className="text-2xl font-semibold text-white">97%</div>
-                <div className="mt-1 text-xs text-violet-200/80">adesão ao plano</div>
+                <div className="mt-1 text-xs text-violet-200/80">
+                  adesão ao plano
+                </div>
               </div>
             </div>
 
@@ -318,24 +343,38 @@ const Hero: React.FC = () => {
             </div>
 
             {/* CTA — DESKTOP (mantém ao lado do texto) + avatares sem afetar layout */}
-<div className="mt-6 hidden lg:block relative">
-  <CTA />
+            <div className="mt-6 hidden lg:block relative">
+              <CTA />
 
-  {/* Avatares posicionados ABSOLUTOS abaixo dos botões (não entram no fluxo) */}
-  <div className="absolute left-0 top-full mt-1 flex items-center gap-3 rounded-2xl px-4 py-3 backdrop-blur">
-    <div className="flex -space-x-2">
-      <img src="/img/avatar/avatar1.jpeg" className="h-8 w-8 rounded-full" alt="" />
-      <img src="/img/avatar/avatar2.jpeg" className="h-8 w-8 rounded-full" alt="" />
-      <img src="/img/avatar/avatar3.jpeg" className="h-8 w-8 rounded-full" alt="" />
-      <img src="/img/avatar/avatar4.jpeg" className="h-8 w-8 rounded-full" alt="" />
-    </div>
-    <span className="text-xs font-medium text-violet-100/90">+300 membros</span>
-  </div>
-
-  
-</div>
-
-            
+              {/* Avatares posicionados ABSOLUTOS abaixo dos botões (não entram no fluxo) */}
+              <div className="absolute left-0 top-full mt-1 flex items-center gap-3 rounded-2xl px-4 py-3 backdrop-blur">
+                <div className="flex -space-x-2">
+                  <img
+                    src="/img/avatar/avatar1.jpeg"
+                    className="h-8 w-8 rounded-full"
+                    alt=""
+                  />
+                  <img
+                    src="/img/avatar/avatar2.jpeg"
+                    className="h-8 w-8 rounded-full"
+                    alt=""
+                  />
+                  <img
+                    src="/img/avatar/avatar3.jpeg"
+                    className="h-8 w-8 rounded-full"
+                    alt=""
+                  />
+                  <img
+                    src="/img/avatar/avatar4.jpeg"
+                    className="h-8 w-8 rounded-full"
+                    alt=""
+                  />
+                </div>
+                <span className="text-xs font-medium text-violet-100/90">
+                  +300 membros
+                </span>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

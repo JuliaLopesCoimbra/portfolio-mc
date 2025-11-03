@@ -55,20 +55,18 @@ export default function SectionBonusRefatorado() {
                 <span>Muscle Club Academy</span>
               </div>
               <h3 className="text-2xl font-semibold text-neutral-900">
-                Aulas práticas, baseadas em evidência — no seu ritmo
+               Muscle Club Academy
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-neutral-700">
-                Tenha acesso à plataforma com trilhas de nutrição e treinamento,
-                atualizadas e objetivas. Estude do <strong>notebook</strong> ou
-                do <strong>celular</strong>, acompanhando materiais e
-                exercícios.
+               Tenha acesso gratuito à nossa plataforma. Na MC Academy você terá acesso às melhores aulas sobre nutrição e treinamento com base em evidências. Aqui, você constrói seu melhor físico e conquista muito conhecimento. 
+
               </p>
 
               <ul className="mt-4 space-y-2 text-sm text-neutral-800">
                 {[
                   "Trilhas organizadas por objetivo (perda de gordura, hipertrofia, performance)",
-                  "Aulas curtas, só o que importa para aplicar no dia a dia",
-                  "Materiais de apoio, checklists e atualizações recorrentes",
+                  "Aulas com desempenho para o seu conhecimento",
+                
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <FaCheck className="mt-[3px] h-4 w-4 flex-shrink-0 text-violet-600" />
@@ -77,8 +75,6 @@ export default function SectionBonusRefatorado() {
                 ))}
               </ul>
             </div>
-            {/* Imagens exatamente como solicitado */}
-           {/* Imagens com comportamento responsivo (sem sobreposição no mobile) */}
 <div className="relative">
   {/* Notebook (principal) */}
   <motion.img
@@ -125,13 +121,11 @@ export default function SectionBonusRefatorado() {
               </div>
 
               <h3 className="text-2xl font-semibold text-neutral-900">
-                Networking que acelera resultados
-              </h3>
+Comunidade MC              </h3>
 
               <p className="mt-2 text-sm leading-relaxed text-neutral-700">
-                Participe de um ambiente com pessoas que têm os mesmos
-                objetivos. Troque experiências, tire dúvidas e mantenha a
-                motivação em alta com desafios e checkpoints.
+              Tenha acesso à nossa comunidade e conheça outros membros que, assim como você, estão em busca da sua melhor versão. Além disso, ao fazer parte da nossa comunidade você conquista gratuitamente a Pulseira VIP Member da MC.
+
               </p>
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -139,9 +133,7 @@ export default function SectionBonusRefatorado() {
                   <FaGift className="h-3.5 w-3.5" />
                   Pulseira VIP Member inclusa
                 </span>
-                <span className="rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700 ring-1 ring-violet-200">
-                  Encontros e desafios mensais
-                </span>
+               
               </div>
             </div>
 
@@ -171,11 +163,9 @@ export default function SectionBonusRefatorado() {
                   <span>Biblioteca de E-books e Guias</span>
                 </div>
                 <h3 className="text-lg font-semibold text-neutral-900">
-                  Conteúdo direto ao ponto — sempre à mão
-                </h3>
+Ebooks e Guias                </h3>
                 <p className="mt-1 text-sm leading-relaxed text-neutral-700">
-                  Acesso a todos os e-books e guias para consultar fórmulas,
-                  protocolos e checklists. Atualizações incluídas para membros.
+                 Como se já não bastasse o acesso à plataforma, você também terá acesso a todos os e-books e guias que desenvolvemos, de forma totalmente gratuita. 
                 </p>
               </div>
 

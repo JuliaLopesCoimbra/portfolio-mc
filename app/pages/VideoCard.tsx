@@ -97,6 +97,12 @@ export default function SectionFeedback() {
       quote: "Ele realmente olha sua rotina e objetivos e monta um treino individualizado para você.",
       highlight: "Resultados que eu nunca conseguiria sozinha.",
     },
+     {
+      name: "Francisco A.",
+      videoUrl: "/video/video6.mp4",
+      quote: "O diferencial deles é sem dúvidas é o acompanhamento, você ser respondido e ficar sem dúvidas",
+      highlight: "Suporte que faz toda a diferença no dia a dia.",
+    },
   ];
 
   return (

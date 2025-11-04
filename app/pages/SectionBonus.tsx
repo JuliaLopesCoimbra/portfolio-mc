@@ -1,14 +1,8 @@
 "use client";
 import React from "react";
-import {
-  FaUsers,
-  FaGraduationCap,
-  FaBook,
-  FaGift,
-  FaCheck,
-} from "react-icons/fa";
+import Image from "next/image";
 import { motion } from "framer-motion";
-
+import { FaUsers, FaGraduationCap, FaBook, FaGift, FaCheck } from "react-icons/fa";
 
 export default function SectionBonusRefatorado() {
   return (
@@ -20,7 +14,6 @@ export default function SectionBonusRefatorado() {
           "radial-gradient(circle at 50% 20%, #ede9fe 0%, #ddd6fe 40%, #c4b5fd 70%)",
       }}
     >
-      {/* <PatternBG /> */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -33,40 +26,31 @@ export default function SectionBonusRefatorado() {
               Bônus exclusivos para membros
             </h2>
             <p className="mt-2 text-sm text-neutral-700">
-              Ao entrar para a comunidade, você desbloqueia benefícios que
-              aceleram sua evolução e mantêm sua motivação em alta.
+              Ao entrar para a comunidade, você desbloqueia benefícios que aceleram sua evolução e mantêm sua motivação em alta.
             </p>
           </header>
 
-          {/* ==== BLOCO 1 – ACADEMY (com duas fotos) ==== */}
+          {/* ==== BLOCO 1 – ACADEMY (inalterado) ==== */}
           <div
             className="mt-10 grid items-center gap-8 rounded-3xl border border-violet-200/60 bg-white/70 p-6 md:grid-cols-2 md:p-10"
             style={{
-              // border:"solid 1px red",
               background:
                 "radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.18), transparent 60%), radial-gradient(900px 500px at 90% 30%, rgba(34,211,238,0.14), transparent 60%), radial-gradient(800px 500px at 50% 85%, rgba(168,85,247,0.14), transparent 60%)",
             }}
           >
-            <div
-            // style={{border:"solid 1px blue"}}
-            >
+            <div>
               <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-violet-50 px-3 py-1 text-[11px] font-semibold tracking-wide text-violet-700 ring-1 ring-violet-200">
                 <FaGraduationCap className="h-3.5 w-3.5" />
                 <span>Muscle Club Academy</span>
               </div>
-              <h3 className="text-2xl font-semibold text-neutral-900">
-               Muscle Club Academy
-              </h3>
+              <h3 className="text-2xl font-semibold text-neutral-900">Muscle Club Academy</h3>
               <p className="mt-2 text-sm leading-relaxed text-neutral-700">
-               Tenha acesso gratuito à nossa plataforma. Na MC Academy você terá acesso às melhores aulas sobre nutrição e treinamento com base em evidências. Aqui, você constrói seu melhor físico e conquista muito conhecimento. 
-
+                Tenha acesso gratuito à nossa plataforma. Na MC Academy você terá acesso às melhores aulas sobre nutrição e treinamento com base em evidências. Aqui, você constrói seu melhor físico e conquista muito conhecimento.
               </p>
-
               <ul className="mt-4 space-y-2 text-sm text-neutral-800">
                 {[
                   "Trilhas organizadas por objetivo (perda de gordura, hipertrofia, performance)",
                   "Aulas com desempenho para o seu conhecimento",
-                
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <FaCheck className="mt-[3px] h-4 w-4 flex-shrink-0 text-violet-600" />
@@ -75,119 +59,145 @@ export default function SectionBonusRefatorado() {
                 ))}
               </ul>
             </div>
-<div className="relative">
-  {/* Notebook (principal) */}
-  <motion.img
-    initial={{ opacity: 0, y: 20, scale: 0.98 }}
-    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-    transition={{ duration: 0.6, ease: "easeOut" }}
-    viewport={{ once: true }}
-    src="img/platform/noteaula.png"
-    alt="Aulas no notebook"
-    className="relative z-10 mx-auto w-full max-w-[520px] rounded-2xl object-cover"
-  />
 
-  {/* Celular: empilhado abaixo no mobile, sobreposto no desktop */}
-  <motion.img
-    initial={{ opacity: 0, y: 16, rotate: -6 }}
-    whileInView={{ opacity: 1, y: 0, rotate: -2 }}
-    transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-    viewport={{ once: true }}
-    src="img/platform/cellaula.png"
-    alt="Aulas no celular"
-    className="
-      relative mx-auto mt-4 w-[160px] rounded-2xl p-2
-      translate-x-0 translate-y-0    /* sem deslocamento no mobile */
-      md:absolute md:-right-2 md:-bottom-6 md:mx-0 md:mt-0 md:w-[200px]
-      md:translate-x-2 md:translate-y-2 md:z-20
-    "
-  />
-</div>
+            <div className="relative">
+              {/* Notebook (principal) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className="relative z-10 mx-auto w-full max-w-[560px]"
+              >
+                <Image
+                  src="/img/platform/academy.png"
+                  alt="Aulas no notebook"
+                  width={1120}
+                  height={700}
+                  className="rounded-2xl object-cover"
+                  sizes="(max-width: 768px) 100vw, 560px"
+                  priority
+                />
+              </motion.div>
 
+           
+            </div>
           </div>
-          {/* ==== BLOCO 2 – COMUNIDADE + PULSEIRA VIP (imagem ao lado) ==== */}
+
+          {/* ==== BLOCO ÚNICO – Comunidade + Pulseira (coluna esquerda) e E-books (coluna direita) ==== */}
           <div
-            className="mt-10 rounded-3xl border border-violet-200/60 bg-white/70 p-6 md:p-10 flex flex-col md:flex-row items-center gap-8"
+            className="mt-10 rounded-3xl border border-violet-200/60 bg-white/80 p-6 md:p-10"
             style={{
               background:
-                "radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.18), transparent 60%), radial-gradient(900px 500px at 90% 30%, rgba(34,211,238,0.14), transparent 60%)",
+                "radial-gradient(1200px 600px at 8% 12%, rgba(124,58,237,0.16), transparent 60%), radial-gradient(900px 500px at 92% 28%, rgba(34,211,238,0.12), transparent 60%)",
             }}
           >
-            {/* texto */}
-            <div className="flex-1">
-              <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-violet-50 px-3 py-1 text-[11px] font-semibold tracking-wide text-violet-700 ring-1 ring-violet-200">
-                <FaUsers className="h-3.5 w-3.5" />
-                <span>Comunidade MC</span>
-              </div>
+            {/* Importante: no mobile (default) fica empilhado, no md+ fica em duas colunas */}
+            <div className="grid gap-10 md:grid-cols-2">
+              {/* Coluna 1: Comunidade + Pulseira */}
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                <div className="flex-1 w-full">
+                  <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-violet-50 px-3 py-1 text-[11px] font-semibold tracking-wide text-violet-700 ring-1 ring-violet-200">
+                    <FaUsers className="h-3.5 w-3.5" />
+                    <span>Comunidade MC</span>
+                  </div>
 
-              <h3 className="text-2xl font-semibold text-neutral-900">
-Comunidade MC              </h3>
+                  <h3 className="text-2xl font-semibold text-neutral-900">Conexão real + Pulseira VIP</h3>
 
-              <p className="mt-2 text-sm leading-relaxed text-neutral-700">
-              Tenha acesso à nossa comunidade e conheça outros membros que, assim como você, estão em busca da sua melhor versão. Além disso, ao fazer parte da nossa comunidade você conquista gratuitamente a Pulseira VIP Member da MC.
+                  <p className="mt-2 text-sm leading-relaxed text-neutral-700">
+                Tenha acesso à nossa comunidade e conheça outros membros que, assim como você, estão em busca da sua melhor versão. Além disso, ao fazer parte da nossa comunidade você conquista gratuitamente a Pulseira VIP Member da MC.
+                  </p>
 
-              </p>
-
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-3 py-1 text-xs font-semibold text-white shadow-sm">
-                  <FaGift className="h-3.5 w-3.5" />
-                  Pulseira VIP Member inclusa
-                </span>
-               
-              </div>
-            </div>
-
-            {/* imagem ao lado */}
-            <div className="relative flex-shrink-0 w-[220px] h-[220px]">
-              <img
-                src="img/platform/pulseira.png"
-                alt="Pulseira VIP Member"
-                className="absolute inset-0 m-auto h-full w-auto object-contain drop-shadow-xl"
-              />
-              <div
-                className="pointer-events-none absolute inset-0 rounded-3xl opacity-50 blur-2xl"
-                style={{
-                  background:
-                    "radial-gradient(closest-side, rgba(139,92,246,0.25), transparent 70%)",
-                }}
-              />
-            </div>
-          </div>
-          {/* ==== BLOCO 3 – EBOOKS/GUIAS (visual natural e sem fundo branco) ==== */}
-          <div className="mt-10 rounded-3xl border border-violet-200/30 bg-transparent relative overflow-hidden">
-            <div className="grid items-center gap-6 p-6 md:grid-cols-[1fr_320px] md:p-8">
-              {/* texto */}
-              <div>
-                <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-violet-50/60 px-3 py-1 text-[11px] font-semibold tracking-wide text-violet-700 ring-1 ring-violet-200/50 backdrop-blur-sm">
-                  <FaBook className="h-3.5 w-3.5" />
-                  <span>Biblioteca de E-books e Guias</span>
+                  <ul className="mt-4 space-y-2 text-sm text-neutral-800">
+                    {[
+                      "Objetivos compartilhados com outros membros",
+                      "Feedbacks da comunidade e da equipe MC",
+                      "Pulseira VIP Member inclusa",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <FaCheck className="mt-[3px] h-4 w-4 flex-shrink-0 text-violet-600" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="text-lg font-semibold text-neutral-900">
-Ebooks e Guias                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-neutral-700">
-                 Como se já não bastasse o acesso à plataforma, você também terá acesso a todos os e-books e guias que desenvolvemos, de forma totalmente gratuita. 
-                </p>
+
+                {/* Imagem da pulseira: menor no mobile, maior no desktop */}
+                <div className="relative flex-shrink-0">
+                  <div className="relative w-[220px] h-[220px] md:w-[320px] md:h-[320px]">
+                    <Image
+                      src="/img/platform/pulseira.png"
+                      alt="Pulseira VIP Member"
+                      fill
+                      className="object-contain drop-shadow-xl"
+                      sizes="(max-width: 768px) 220px, 320px"
+                    />
+                  </div>
+                  <div
+                    className="pointer-events-none absolute inset-0 -z-10 opacity-60 blur-2xl"
+                    style={{
+                      background:
+                        "radial-gradient(closest-side, rgba(139,92,246,0.35), transparent 70%)",
+                    }}
+                  />
+                </div>
               </div>
 
-              {/* imagem “natural” com efeito difuso */}
-              <div className="relative flex justify-center items-center">
-                <motion.img
-                  initial={{ opacity: 0, y: 20, scale: 0.96 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  viewport={{ once: true }}
-                  src="img/platform/ebook.png"
-                  alt="E-books e guias"
-                  className="relative z-10 w-auto max-h-[200px] md:max-h-[240px] object-contain rounded-[32px] shadow-2xl drop-shadow-2xl"
-                />
-                {/* brilho e sombra difusa */}
-                <div
-                  className="absolute inset-0 -z-10 blur-3xl opacity-50"
-                  style={{
-                    background:
-                      "radial-gradient(closest-side, rgba(139,92,246,0.25), transparent 70%)",
-                  }}
-                />
+              {/* Coluna 2: E-books e Guias */}
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                <div className="flex-1 w-full">
+                  <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-violet-50/70 px-3 py-1 text-[11px] font-semibold tracking-wide text-violet-700 ring-1 ring-violet-200/60">
+                    <FaBook className="h-3.5 w-3.5" />
+                    <span>Biblioteca de E‑books e Guias</span>
+                  </div>
+
+                  <h3 className="text-2xl font-semibold text-neutral-900">E‑books práticos, direto ao ponto</h3>
+
+                  <p className="mt-2 text-sm leading-relaxed text-neutral-700">
+                Como se já não bastasse o acesso à plataforma, você também terá acesso a todos os e-books e guias que desenvolvemos, de forma totalmente gratuita.
+                  </p>
+
+                  <ul className="mt-4 space-y-2 text-sm text-neutral-800">
+                    {[
+                      "Planos alimentares",
+                      "Guias de periodização e progressão de carga",
+                      "Checklist de hábitos e rotinas ",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <FaCheck className="mt-[3px] h-4 w-4 flex-shrink-0 text-violet-600" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Imagem dos e‑books: responsiva */}
+                <div className="relative flex-shrink-0">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    viewport={{ once: true }}
+                    className="relative w-[240px] h-[180px] md:w-[340px] md:h-[260px]"
+                  >
+                    <Image
+                      src="/img/platform/ebook.png"
+                      alt="Coleção de e‑books e guias"
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 240px, 340px"
+                    />
+                  </motion.div>
+
+                  {/* brilho difuso */}
+                  <div
+                    className="pointer-events-none absolute inset-0 -z-10 opacity-60 blur-2xl"
+                    style={{
+                      background:
+                        "radial-gradient(closest-side, rgba(168,85,247,0.28), transparent 70%)",
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>

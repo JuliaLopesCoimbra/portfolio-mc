@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 function cn(...classes: Array<string | false | null | undefined>): string {
   return classes.filter(Boolean).join(" ");
 }
+type FeatureItem = { text: string; highlight?: boolean };
 
 /** Mapeamento de labels */
 const CATEGORY_OPTIONS = [
@@ -110,42 +111,42 @@ function PatternBG() {
   );
 }
 
-/** Benefícios dinâmicos conforme seleção */
-function getFeatures(category: CategoryKey, period: PeriodKey): string[] {
+function getFeatures(category: CategoryKey, period: PeriodKey): FeatureItem[] {
   const isDieta = category === "dieta" || category === "combo";
   const isTreino = category === "treino" || category === "combo";
   const isSemestral = period === "semestral";
 
-  const base = [
-    "Check-ins semanais (acompanhamento humanizado e próximo)",
-    "Suporte diário (respostas em até 24h)",
+  const base: FeatureItem[] = [
+    { text: "Check-ins semanais (acompanhamento humanizado e próximo)" },
+    { text: "Suporte diário (respostas em até 24h)" },
   ];
 
-  const dieta = isDieta
+  const dieta: FeatureItem[] = isDieta
     ? [
-        "Dieta 100% personalizada para seu objetivo",
-        "Lista de substituição de alimentos (plano com dieta*)",
-        "Prescrição de suplementos (plano com dieta*)",
+        { text: "Dieta 100% personalizada para seu objetivo" },
+        { text: "Lista de substituição de alimentos (plano com dieta*)" },
+        { text: "Prescrição de suplementos (plano com dieta*)" },
       ]
     : [];
 
-  const treino = isTreino
+  const treino: FeatureItem[] = isTreino
     ? [
-        "Treino 100% personalizado para seu objetivo",
-        "Correções das execuções dos exercícios (plano com treino*)",
+        { text: "Treino 100% personalizado para seu objetivo" },
+        { text: "Correções das execuções dos exercícios (plano com treino*)" },
       ]
     : [];
 
-  const semestralExtras = isSemestral
+  const semestralExtras: FeatureItem[] = isSemestral
     ? [
-        "Acesso à Muscle Club Academy (Exclusivo plano semestral)",
-        "Pulseira MC (exclusivo para assinantes do plano semestral)",
-        "Camiseta MC (exclusivo para assinantes do plano semestral)",
+        { text: "Acesso à Muscle Club Academy (Exclusivo plano semestral)", highlight: true },
+        { text: "Pulseira MC (exclusivo para assinantes do plano semestral)", highlight: true },
+        { text: "Camiseta MC (exclusivo para assinantes do plano semestral)", highlight: true },
       ]
     : [];
 
   return [...base, ...dieta, ...treino, ...semestralExtras];
 }
+
 
 /** Tipos do Card */
 type PlanCardProps = {
@@ -182,14 +183,26 @@ function PlanCard({
         <span className="text-sm text-neutral-600">/ {periodLabel.toLowerCase()}</span>
       </div>
 
-      <ul className="mt-4 flex-1 space-y-2 text-sm text-neutral-800">
-        {features.map((f, i) => (
-          <li key={i} className="flex items-start gap-2">
-            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-violet-600" />
-            {f}
-          </li>
-        ))}
-      </ul>
+   <ul className="mt-4 flex-1 space-y-2 text-sm text-neutral-800">
+  {features.map((f, i) => (
+    <li key={i} className="flex items-start gap-2">
+      <span
+        className={cn(
+          "mt-1 h-1.5 w-1.5 rounded-full",
+          f.highlight ? "bg-violet-700" : "bg-violet-600"
+        )}
+      />
+      <span
+        className={cn(
+          f.highlight ? "text-violet-700 font-medium" : "text-neutral-800"
+        )}
+      >
+        {f.text}
+      </span>
+    </li>
+  ))}
+</ul>
+
 
       <button
         onClick={() => openWhatsAppByKeys(categoryKey, periodKey)}

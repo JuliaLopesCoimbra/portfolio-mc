@@ -9,7 +9,7 @@ function cn(...classes: Array<string | false | null | undefined>) {
 
 function handleWhatsAppClick() {
   window.open(
-    "https://wa.me/5531996367096?text=Quero%20garantir%20minha%20vaga%20na%20Muscle%20Club!",
+    "https://wa.me/5531936180154?text=Quero%20garantir%20minha%20vaga%20na%20Muscle%20Club!",
     "_blank"
   );
 }

@@ -54,7 +54,7 @@ export default function Header() {
 
   function handleClick() {
     window.open(
-      "https://wa.me/5531996367096?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20consultoria.",
+      "https://wa.me/5531936180154?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20consultoria.",
       "_blank"
     );
   }

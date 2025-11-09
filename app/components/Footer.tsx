@@ -55,7 +55,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
           <h4 className="text-sm text-violet-700 font-semibold">Contato</h4>
           <a
-            href="https://wa.me/5531996367096?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20consultoria."
+            href="https://wa.me/5531936180154?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20consultoria."
             target="_blank"
             className="inline-flex items-center gap-2 text-neutral-700 hover:text-violet-600 transition"
           >
@@ -92,7 +92,7 @@ export default function Footer() {
             <h3 className="mb-3 text-sm font-semibold text-violet-700">Faça parte</h3>
             <p className="text-sm text-neutral-700">Garanta sua vaga agora e inicie sua evolução com a Muscle Club.</p>
             <Link
-              href="https://wa.me/5531996367096?text=Quero%20garantir%20minha%20vaga%20na%20Muscle%20Club!"
+              href="https://wa.me/5531936180154?text=Quero%20garantir%20minha%20vaga%20na%20Muscle%20Club!"
               target="_blank"
               className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-700"
             >

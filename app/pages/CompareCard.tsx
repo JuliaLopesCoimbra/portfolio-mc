@@ -13,7 +13,7 @@ function cn(...classes: Array<string | false | null | undefined>) {
 
 function handleWhatsAppClick() {
   window.open(
-    "https://wa.me/5531996367096?text=Quero%20ser%20o%20pr%C3%B3ximo%20resultado%20da%20Muscle%20Club!",
+    "https://wa.me/5531936180154?text=Quero%20ser%20o%20pr%C3%B3ximo%20resultado%20da%20Muscle%20Club!",
     "_blank"
   );
 }
